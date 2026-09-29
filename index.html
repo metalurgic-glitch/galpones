@@ -53,7 +53,7 @@
             margin-top: 2px;
         }
 
-        /* Carrusel / Slider de 4 Imágenes */
+        /* Carrusel de Imágenes */
         .carousel-container {
             position: relative;
             width: 100%;
@@ -89,7 +89,6 @@
             object-position: center;
         }
 
-        /* Puntitos indicadores del carrusel */
         .carousel-dots {
             position: absolute;
             bottom: 12px;
@@ -114,7 +113,7 @@
             border-radius: 4px;
         }
 
-        /* Sección Título y Botones */
+        /* Sección Título y Botones de Cotización Independientes */
         .hero-text-section {
             background-color: #ffffff;
             padding: 30px 20px 24px;
@@ -172,7 +171,7 @@
             border: 2px solid #1d2636;
         }
 
-        /* Tres íconos de beneficios */
+        /* Beneficios */
         .features-section {
             background-color: #f8fafc;
             padding: 28px 16px;
@@ -203,7 +202,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Contenedor Tarjetas */
+        /* Tarjeta de información */
         .content {
             max-width: 480px;
             margin: 0 auto;
@@ -261,125 +260,7 @@
             color: #0f172a;
         }
 
-        /* Formulario */
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .label {
-            font-size: 11px;
-            font-weight: 700;
-            color: #64748b;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .input {
-            width: 100%;
-            padding: 12px 14px;
-            font-size: 15px;
-            border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            background-color: #f8fafc;
-            color: #0f172a;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-
-        .input:focus {
-            border-color: #2563eb;
-            background-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        select.input {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            background-size: 16px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 22px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 14px 10px;
-            font-size: 14px;
-            font-weight: 700;
-            border-radius: 12px;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-        }
-
-        .btn-reset {
-            background-color: #ffffff;
-            border: 1px solid #cbd5e1;
-            color: #334155;
-        }
-
-        .btn-calculate {
-            background-color: #0f172a;
-            color: #ffffff;
-        }
-
-        /* Resultado */
-        .result-box {
-            display: none;
-            margin-top: 20px;
-            padding: 18px;
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-radius: 14px;
-            text-align: center;
-        }
-
-        .result-box h3 {
-            font-size: 13px;
-            color: #166534;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .result-price {
-            font-size: 26px;
-            font-weight: 800;
-            color: #15803d;
-            margin-bottom: 6px;
-        }
-
-        .result-details {
-            font-size: 13px;
-            color: #374151;
-            margin-bottom: 16px;
-            line-height: 1.4;
-        }
-
-        .btn-whatsapp-send {
-            width: 100%;
-            background-color: #25d366;
-            color: white;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 15px;
-            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
-        }
-
-        /* Botón Flotante WhatsApp */
+        /* Flotante WhatsApp */
         .whatsapp-float {
             position: fixed;
             width: 56px;
@@ -402,7 +283,7 @@
 </head>
 <body>
 
-    <!-- Header estilo Canva -->
+    <!-- Header -->
     <div class="top-bar">
         <div class="brand-card">
             <div class="brand-title">Melo Metalurgica</div>
@@ -410,28 +291,23 @@
         </div>
     </div>
 
-    <!-- Carrusel / Slider de 4 Imágenes Principal -->
+    <!-- Carrusel de Imágenes -->
     <div class="carousel-container">
         <div class="carousel-track" id="carouselTrack">
-            <!-- Imagen 1: Ajustado a titulo.jpeg.jpg -->
             <div class="carousel-slide">
                 <img src="titulo.jpeg.jpg" alt="Estamos en General Villegas" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';">
             </div>
-            <!-- Imagen 2 -->
             <div class="carousel-slide">
-                <img src="foto2.jpg" alt="Galpón Estructura Metálica" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80';">
+                <img src="foto2.jpg" alt="Estructura Metálica" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80';">
             </div>
-            <!-- Imagen 3 -->
             <div class="carousel-slide">
                 <img src="foto3.jpg" alt="Tinglado Industrial" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80';">
             </div>
-            <!-- Imagen 4 -->
             <div class="carousel-slide">
-                <img src="foto4.jpg" alt="Montaje de Estructura" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80';">
+                <img src="foto4.jpg" alt="Montaje" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80';">
             </div>
         </div>
 
-        <!-- Indicadores de Puntitos -->
         <div class="carousel-dots">
             <div class="dot active"></div>
             <div class="dot"></div>
@@ -440,18 +316,18 @@
         </div>
     </div>
 
-    <!-- Sección Título e Interfaz -->
+    <!-- Título y Botones a la página de Cotización -->
     <div class="hero-text-section">
         <h1 class="hero-title">TINGLADOS Y GALPONES</h1>
         <p class="hero-subtitle">Fabricación a medida en todo el país, con estructuras seguras y montaje rápido.</p>
         
         <div class="hero-buttons">
-            <a href="#cotizadorCard" class="btn-hero btn-dark">Cotizar mi Tinglado</a>
-            <a href="#cotizadorCard" class="btn-hero btn-outline">Cotizar mi Galpón</a>
+            <a href="cotizador.html?tipo=tinglado" class="btn-hero btn-dark">Cotizar mi Tinglado</a>
+            <a href="cotizador.html?tipo=galpon" class="btn-hero btn-outline">Cotizar mi Galpón</a>
         </div>
     </div>
 
-    <!-- Tres Íconos de Beneficios -->
+    <!-- Beneficios -->
     <div class="features-section">
         <div class="features-grid">
             <div class="feature-item">
@@ -469,13 +345,10 @@
         </div>
     </div>
 
-    <!-- Contenido Principal -->
     <div class="content">
-
-        <!-- Especificaciones -->
         <div class="card">
             <div class="card-title">
-                <i class="fa-solid fa-list-check"></i> Galpones
+                <i class="fa-solid fa-list-check"></i> Especificaciones Generales
             </div>
             <ul class="specs-list">
                 <li><strong>Cabreadas y columnas de:</strong> hierro torsionado, alma llena, o perfil U.</li>
@@ -485,117 +358,22 @@
                 <li><strong>Portón corredizo incluido.</strong></li>
             </ul>
         </div>
-
-        <!-- Cotizador -->
-        <div class="card" id="cotizadorCard">
-            <div class="card-title">
-                <i class="fa-solid fa-calculator"></i> Cotizá tu Galpón
-            </div>
-
-            <form id="cotizadorForm">
-                <div class="form-group">
-                    <label class="label" for="material">MATERIAL</label>
-                    <select id="material" class="input">
-                        <option value="Hierro Torsionado">Hierro Torsionado</option>
-                        <option value="Alma Llena">Alma Llena</option>
-                        <option value="Perfil U">Perfil U</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="label" for="alto">ALTO (MTS)</label>
-                    <input type="number" id="alto" class="input" placeholder="Ej: 5" min="1" step="0.5">
-                </div>
-
-                <div class="form-group">
-                    <label class="label" for="ancho">ANCHO (MTS)</label>
-                    <input type="number" id="ancho" class="input" placeholder="Ej: 10" min="1" step="0.5">
-                </div>
-
-                <div class="form-group">
-                    <label class="label" for="largo">LARGO (MTS)</label>
-                    <input type="number" id="largo" class="input" placeholder="Ej: 20" min="1" step="0.5">
-                </div>
-
-                <div class="btn-group">
-                    <button type="button" class="btn btn-reset" onclick="resetearFormulario()">Resetear</button>
-                    <button type="button" class="btn btn-calculate" onclick="calcularCotizacion()">Calcular</button>
-                </div>
-            </form>
-
-            <div id="resultado" class="result-box">
-                <h3>Presupuesto Estimado</h3>
-                <div id="precioFinal" class="result-price">$0 ARS</div>
-                <div id="detallesSuperficie" class="result-details">Superficie: 0 m²</div>
-                <a id="linkWhatsapp" href="#" target="_blank" class="btn-whatsapp-send">
-                    <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                </a>
-            </div>
-        </div>
-
     </div>
 
-    <!-- Botón Flotante de WhatsApp -->
-    <a id="whatsappFloat" href="https://wa.me/5493388467395?text=Hola%20Melo%20Metal%C3%Bargica,%20quisiera%20consultar%20por%20un%20galp%C3%B3n" class="whatsapp-float" target="_blank">
+    <!-- Botón WhatsApp -->
+    <a href="https://wa.me/5493388467395?text=Hola%20Melo%20Metal%C3%Bargica,%20quisiera%20consultar%20por%20un%20presupuesto" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
         const track = document.getElementById('carouselTrack');
         const dots = document.querySelectorAll('.dot');
-
         if (track) {
             track.addEventListener('scroll', () => {
                 const slideWidth = track.clientWidth;
                 const index = Math.round(track.scrollLeft / slideWidth);
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
-                });
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
             });
-        }
-
-        const PRECIO_POR_M2 = 95000;
-        const TELEFONO_WHATSAPP = "5493388467395";
-
-        function calcularCotizacion() {
-            const alto = parseFloat(document.getElementById('alto').value);
-            const ancho = parseFloat(document.getElementById('ancho').value);
-            const largo = parseFloat(document.getElementById('largo').value);
-            const material = document.getElementById('material').value;
-
-            if (!ancho || !largo || !alto || ancho <= 0 || largo <= 0 || alto <= 0) {
-                alert("Por favor, ingresa alto, ancho y largo para calcular.");
-                return;
-            }
-
-            const superficiePlanta = ancho * largo;
-            const metrosCuadradosComputables = Math.round(superficiePlanta * (1 + (alto / 10)));
-            const precioTotal = metrosCuadradosComputables * PRECIO_POR_M2;
-
-            const precioFormateado = new Intl.NumberFormat('es-AR', {
-                style: 'currency',
-                currency: 'ARS',
-                maximumFractionDigits: 0
-            }).format(precioTotal);
-
-            document.getElementById('precioFinal').innerText = precioFormateado;
-            document.getElementById('detallesSuperficie').innerHTML = 
-                `Superficie cubierta computable: <strong>${metrosCuadradosComputables} m²</strong><br>` +
-                `Medidas: ${ancho}m (Ancho) × ${largo}m (Largo) × ${alto}m (Alto)`;
-            document.getElementById('resultado').style.display = 'block';
-
-            const mensajeWa = `Hola Melo Metalúrgica! Quisiera cotizar un galpón:%0A` +
-                `- *Material:* ${material}%0A` +
-                `- *Medidas:* ${ancho}m ancho x ${largo}m largo x ${alto}m alto%0A` +
-                `- *Superficie computable:* ${metrosCuadradosComputables} m²%0A` +
-                `- *Presupuesto estimado:* ${precioFormateado}`;
-
-            document.getElementById('linkWhatsapp').href = `https://wa.me/${TELEFONO_WHATSAPP}?text=${mensajeWa}`;
-        }
-
-        function resetearFormulario() {
-            document.getElementById('cotizadorForm').reset();
-            document.getElementById('resultado').style.display = 'none';
         }
     </script>
 </body>
