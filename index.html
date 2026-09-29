@@ -39,7 +39,7 @@
     header {
       background-color: #ffffff;
       border-bottom: 1px solid var(--border-color);
-      padding: 15px 20px;
+      padding: 12px 20px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -50,14 +50,14 @@
       max-width: 1100px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
     }
 
     .logo-text {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: var(--primary);
       text-transform: uppercase;
       letter-spacing: -0.5px;
@@ -70,7 +70,7 @@
     /* HERO SECTION */
     .hero {
       background-color: #ffffff;
-      padding: 30px 20px 40px 20px;
+      padding: 15px 15px 25px 15px;
       text-align: center;
     }
 
@@ -82,54 +82,54 @@
     /* Hero Banner Image */
     .hero-banner-img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
       border-radius: 12px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .hero h1 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 1.8rem;
+      font-size: 1.45rem;
       color: var(--primary);
       text-transform: uppercase;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
     }
 
     .hero p {
       color: var(--text-muted);
-      font-size: 1rem;
-      margin-bottom: 25px;
+      font-size: 0.92rem;
+      margin-bottom: 20px;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.4;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
-      flex-wrap: wrap;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 24px;
+      padding: 12px 16px;
       border-radius: 8px;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       text-decoration: none;
       transition: all 0.2s ease;
       cursor: pointer;
       flex: 1;
-      min-width: 160px;
-      max-width: 250px;
+      max-width: 200px;
     }
 
     .btn-dark {
@@ -149,8 +149,8 @@
       background-color: #ffffff;
       border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
-      padding: 25px 15px;
-      margin-bottom: 35px;
+      padding: 20px 10px;
+      margin-bottom: 30px;
     }
 
     .features-grid {
@@ -158,7 +158,7 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
+      gap: 10px;
       text-align: center;
     }
 
@@ -169,14 +169,14 @@
     }
 
     .feature-item i {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: var(--primary);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .feature-item h4 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.68rem;
       font-weight: 800;
       color: var(--primary);
       text-transform: uppercase;
@@ -187,15 +187,15 @@
     .container {
       max-width: 700px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 15px;
     }
 
     /* PRODUCT CARDS (VER GALPONES / VER TINGLADOS) */
     .product-section {
       display: flex;
       flex-direction: column;
-      gap: 25px;
-      margin-bottom: 45px;
+      gap: 20px;
+      margin-bottom: 40px;
     }
 
     .product-card {
@@ -204,7 +204,7 @@
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease;
       display: block;
     }
 
@@ -214,7 +214,7 @@
 
     .product-card-img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
       display: block;
     }
@@ -222,7 +222,7 @@
     .product-card-footer {
       background-color: var(--primary);
       color: #ffffff;
-      padding: 18px 20px;
+      padding: 16px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -230,32 +230,32 @@
 
     .product-card-footer span {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
     }
 
     .product-card-footer .arrow-btn {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       background-color: rgba(255,255,255,0.15);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     /* TRABAJAMOS CON ESTRUCTURAS DE */
     .structures-section {
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
     .section-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: var(--primary);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       line-height: 1.2;
     }
 
@@ -276,8 +276,8 @@
     }
 
     .structure-icon {
-      width: 70px;
-      height: 70px;
+      width: 65px;
+      height: 65px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -288,21 +288,20 @@
     }
 
     .structure-icon svg {
-      width: 55px;
-      height: 55px;
-      stroke: #334155;
+      width: 50px;
+      height: 50px;
     }
 
     .structure-info h3 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .structure-info p {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       line-height: 1.4;
     }
@@ -311,22 +310,22 @@
     .about-section {
       background-color: #f1f5f9;
       border-radius: 12px;
-      padding: 30px 20px;
-      margin-bottom: 40px;
+      padding: 25px 18px;
+      margin-bottom: 35px;
     }
 
     .about-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 800;
-      color: #991b1b; /* Rojo sobrio acorde al diseño */
-      margin-bottom: 12px;
+      color: #991b1b;
+      margin-bottom: 10px;
     }
 
     .about-text {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     /* WHATSAPP FLOAT BUTTON */
@@ -336,13 +335,13 @@
       right: 20px;
       background-color: var(--accent-green);
       color: white;
-      width: 60px;
-      height: 60px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: 30px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       z-index: 1000;
       text-decoration: none;
@@ -353,7 +352,7 @@
       text-align: center;
       padding: 20px;
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       border-top: 1px solid var(--border-color);
       background-color: #ffffff;
     }
@@ -371,7 +370,8 @@
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-container">
-      <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80" alt="Galpones y Tinglados Melo" class="hero-banner-img">
+      <!-- FOTO PRINCIPAL DE ESTRUCTURA METÁLICA DE GALPÓN -->
+      <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1000&q=80" alt="Estructuras Melo Metalúrgica" class="hero-banner-img">
       
       <h1>TINGLADOS Y GALPONES</h1>
       <p>Fabricación a medida en todo el país, con estructuras seguras y montaje rápido.</p>
@@ -404,7 +404,7 @@
   <!-- MAIN CONTENT CONTAINER -->
   <div class="container">
 
-    <!-- FOTO 2: TARJETAS VER GALPONES / VER TINGLADOS -->
+    <!-- TARJETAS VER GALPONES / VER TINGLADOS -->
     <section class="product-section">
       <!-- Tarjeta Galpones -->
       <a href="galpones.html" class="product-card">
@@ -425,7 +425,7 @@
       </a>
     </section>
 
-    <!-- FOTO 3: TRABAJAMOS CON ESTRUCTURAS DE -->
+    <!-- TRABAJAMOS CON ESTRUCTURAS DE -->
     <section class="structures-section">
       <h2 class="section-title">Trabajamos con estructuras de:</h2>
 
@@ -459,7 +459,7 @@
           </div>
           <div class="structure-info">
             <h3>Perfil U</h3>
-            <p>Sistema liviano y reforzado, fácil de montar y con excelente estabilidad lateral. Tiene una mejor terminación visual y es más estético.</p>
+            <p>Sistema liviano y reinforced, fácil de montar y con excelente estabilidad lateral. Tiene una mejor terminación visual y es más estético.</p>
           </div>
         </div>
 
