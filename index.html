@@ -53,20 +53,65 @@
             margin-top: 2px;
         }
 
-        /* Imagen Principal (Más ancha y alta) */
-        .hero-image-container {
+        /* Carrusel / Slider de 4 Imágenes */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            background-color: #0d1527;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
             width: 100%;
             height: 270px;
-            overflow: hidden;
-            background-color: #0d1527;
+            scroll-snap-align: start;
             position: relative;
         }
 
-        .hero-image-container img {
+        .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
+        }
+
+        /* Puntitos indicadores del carrusel */
+        .carousel-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #ffffff;
+            width: 20px;
+            border-radius: 4px;
         }
 
         /* Sección Título y Botones */
@@ -156,21 +201,6 @@
             text-transform: uppercase;
             line-height: 1.3;
             letter-spacing: 0.3px;
-        }
-
-        /* Imagen Galpón Terminado */
-        .gallery-image-container {
-            width: 100%;
-            max-width: 480px;
-            margin: 20px auto 0;
-            padding: 0 16px;
-        }
-
-        .gallery-image-container img {
-            width: 100%;
-            border-radius: 14px;
-            display: block;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         /* Contenedor Tarjetas */
@@ -380,9 +410,34 @@
         </div>
     </div>
 
-    <!-- Imagen Superior (Ancha, con la estructura de Villegas) -->
-    <div class="hero-image-container">
-        <img src="banner.jpg" alt="Estamos en General Villegas" id="bannerImg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';">
+    <!-- Carrusel / Slider de 4 Imágenes Principal -->
+    <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+            <!-- Imagen 1: Tu banner subido -->
+            <div class="carousel-slide">
+                <img src="Título.jpeg" alt="Estamos en General Villegas" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';">
+            </div>
+            <!-- Imagen 2 -->
+            <div class="carousel-slide">
+                <img src="foto2.jpg" alt="Galpón Estructura Metálica" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80';">
+            </div>
+            <!-- Imagen 3 -->
+            <div class="carousel-slide">
+                <img src="foto3.jpg" alt="Tinglado Industrial" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80';">
+            </div>
+            <!-- Imagen 4 -->
+            <div class="carousel-slide">
+                <img src="foto4.jpg" alt="Montaje de Estructura" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80';">
+            </div>
+        </div>
+
+        <!-- Indicadores de Puntitos -->
+        <div class="carousel-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
     </div>
 
     <!-- Sección Título e Interfaz -->
@@ -412,11 +467,6 @@
                 <p>SERVICIO PERSONALIZADO PRE Y POST VENTA</p>
             </div>
         </div>
-    </div>
-
-    <!-- Imagen Galpón Terminado -->
-    <div class="gallery-image-container">
-        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Galpón Terminado">
     </div>
 
     <!-- Contenido Principal -->
@@ -491,6 +541,21 @@
     </a>
 
     <script>
+        // Actualizar puntitos del carrusel al deslizar con el dedo
+        const track = document.getElementById('carouselTrack');
+        const dots = document.querySelectorAll('.dot');
+
+        if (track) {
+            track.addEventListener('scroll', () => {
+                const slideWidth = track.clientWidth;
+                const index = Math.round(track.scrollLeft / slideWidth);
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            });
+        }
+
+        // Lógica del Cotizador
         const PRECIO_POR_M2 = 95000;
         const TELEFONO_WHATSAPP = "5493388467395";
 
@@ -537,4 +602,3 @@
     </script>
 </body>
 </html>
-
