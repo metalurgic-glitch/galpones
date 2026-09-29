@@ -1,380 +1,505 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melo Metalúrgica - General Villegas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melo Metalúrgica | Galpones y Tinglados</title>
+  
+  <!-- FontAwesome e Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-        body {
-            background-color: #f8fafc;
-            color: #0f172a;
-            padding-bottom: 40px;
-        }
+  <style>
+    :root {
+      --primary: #1a2536;
+      --primary-hover: #111827;
+      --accent: #2563eb;
+      --accent-green: #25D366;
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #e2e8f0;
+    }
 
-        /* Header estilo Canva */
-        .top-bar {
-            background-color: #0d1527;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .brand-card {
-            background-color: #ffffff;
-            padding: 6px 12px;
-            border-radius: 2px;
-            display: flex;
-            flex-direction: column;
-        }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
 
-        .brand-title {
-            color: #0f172a;
-            font-weight: 900;
-            font-size: 15px;
-            line-height: 1.1;
-            letter-spacing: -0.3px;
-        }
+    /* HEADER */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
 
-        .brand-subtitle {
-            color: #334155;
-            font-weight: 700;
-            font-size: 11px;
-            line-height: 1.1;
-            margin-top: 2px;
-        }
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        /* Carrusel de Imágenes */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            background-color: #0d1527;
-            overflow: hidden;
-        }
+    .logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
 
-        .carousel-track {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
+    .logo-text span {
+      color: var(--accent);
+    }
 
-        .carousel-track::-webkit-scrollbar {
-            display: none;
-        }
+    /* HERO SECTION */
+    .hero {
+      background-color: #ffffff;
+      padding: 30px 20px 40px 20px;
+      text-align: center;
+    }
 
-        .carousel-slide {
-            flex: 0 0 100%;
-            width: 100%;
-            height: 270px;
-            scroll-snap-align: start;
-            position: relative;
-        }
+    .hero-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
+    /* Hero Banner Image */
+    .hero-banner-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
 
-        .carousel-dots {
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 10;
-        }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.4);
-            transition: all 0.3s ease;
-        }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 25px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        .dot.active {
-            background-color: #ffffff;
-            width: 20px;
-            border-radius: 4px;
-        }
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        /* Sección Título y Botones de Cotización Independientes */
-        .hero-text-section {
-            background-color: #ffffff;
-            padding: 30px 20px 24px;
-            text-align: center;
-            border-bottom: 1px solid #e2e8f0;
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      flex: 1;
+      min-width: 160px;
+      max-width: 250px;
+    }
 
-        .hero-title {
-            font-size: 26px;
-            font-weight: 900;
-            color: #1e293b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-            margin-bottom: 12px;
-        }
+    .btn-dark {
+      background-color: var(--primary);
+      color: #ffffff;
+      border: 2px solid var(--primary);
+    }
 
-        .hero-subtitle {
-            font-size: 15px;
-            color: #475569;
-            line-height: 1.5;
-            max-width: 420px;
-            margin: 0 auto 24px;
-            font-weight: 500;
-        }
+    .btn-outline {
+      background-color: #ffffff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
 
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            max-width: 420px;
-            margin: 0 auto;
-        }
+    /* FEATURES BAR */
+    .features-bar {
+      background-color: #ffffff;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 25px 15px;
+      margin-bottom: 35px;
+    }
 
-        .btn-hero {
-            flex: 1;
-            padding: 14px 10px;
-            font-size: 13.5px;
-            font-weight: 800;
-            border-radius: 8px;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.2s ease;
-        }
+    .features-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      text-align: center;
+    }
 
-        .btn-dark {
-            background-color: #1d2636;
-            color: #ffffff;
-            border: 2px solid #1d2636;
-        }
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .btn-outline {
-            background-color: #ffffff;
-            color: #1d2636;
-            border: 2px solid #1d2636;
-        }
+    .feature-item i {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
 
-        /* Beneficios */
-        .features-section {
-            background-color: #f8fafc;
-            padding: 28px 16px;
-            border-bottom: 1px solid #e2e8f0;
-        }
+    .feature-item h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            max-width: 480px;
-            margin: 0 auto;
-            text-align: center;
-        }
+    /* MAIN CONTENT CONTAINER */
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        .feature-item i {
-            font-size: 26px;
-            color: #1e293b;
-            margin-bottom: 10px;
-        }
+    /* PRODUCT CARDS (VER GALPONES / VER TINGLADOS) */
+    .product-section {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-bottom: 45px;
+    }
 
-        .feature-item p {
-            font-size: 11px;
-            font-weight: 800;
-            color: #334155;
-            text-transform: uppercase;
-            line-height: 1.3;
-            letter-spacing: 0.3px;
-        }
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: block;
+    }
 
-        /* Tarjeta de información */
-        .content {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
+    .product-card:active {
+      transform: scale(0.98);
+    }
 
-        .card {
-            background: #ffffff;
-            border-radius: 18px;
-            padding: 22px 20px;
-            margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-            border: 1px solid #e2e8f0;
-        }
+    .product-card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
 
-        .card-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 20px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 16px;
-        }
+    .product-card-footer {
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .card-title i {
-            color: #2563eb;
-            font-size: 18px;
-        }
+    .product-card-footer span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
 
-        .specs-list {
-            list-style: none;
-            padding: 0;
-        }
+    .product-card-footer .arrow-btn {
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
 
-        .specs-list li {
-            position: relative;
-            padding-left: 18px;
-            margin-bottom: 12px;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #334155;
-        }
+    /* TRABAJAMOS CON ESTRUCTURAS DE */
+    .structures-section {
+      margin-bottom: 50px;
+    }
 
-        .specs-list li::before {
-            content: "•";
-            position: absolute;
-            left: 2px;
-            color: #2563eb;
-            font-weight: bold;
-            font-size: 18px;
-        }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
 
-        .specs-list strong {
-            color: #0f172a;
-        }
+    .structures-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        /* Flotante WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            width: 56px;
-            height: 56px;
-            bottom: 24px;
-            right: 20px;
-            background-color: #25d366;
-            color: #fff;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-    </style>
+    .structure-card {
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 15px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .structure-icon {
+      width: 70px;
+      height: 70px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f1f5f9;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .structure-icon svg {
+      width: 55px;
+      height: 55px;
+      stroke: #334155;
+    }
+
+    .structure-info h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .structure-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ACERCA DE SECTION */
+    .about-section {
+      background-color: #f1f5f9;
+      border-radius: 12px;
+      padding: 30px 20px;
+      margin-bottom: 40px;
+    }
+
+    .about-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #991b1b; /* Rojo sobrio acorde al diseño */
+      margin-bottom: 12px;
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* WHATSAPP FLOAT BUTTON */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--accent-green);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border-color);
+      background-color: #ffffff;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <div class="top-bar">
-        <div class="brand-card">
-            <div class="brand-title">Melo Metalurgica</div>
-            <div class="brand-subtitle">General Villegas</div>
-        </div>
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="logo-text">MELO <span>METALÚRGICA</span></div>
     </div>
+  </header>
 
-    <!-- Carrusel de Imágenes -->
-    <div class="carousel-container">
-        <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-slide">
-                <img src="titulo.jpeg.jpg" alt="Estamos en General Villegas" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';">
-            </div>
-            <div class="carousel-slide">
-                <img src="foto2.jpg" alt="Estructura Metálica" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80';">
-            </div>
-            <div class="carousel-slide">
-                <img src="foto3.jpg" alt="Tinglado Industrial" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80';">
-            </div>
-            <div class="carousel-slide">
-                <img src="foto4.jpg" alt="Montaje" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80';">
-            </div>
-        </div>
-
-        <div class="carousel-dots">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-container">
+      <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80" alt="Galpones y Tinglados Melo" class="hero-banner-img">
+      
+      <h1>TINGLADOS Y GALPONES</h1>
+      <p>Fabricación a medida en todo el país, con estructuras seguras y montaje rápido.</p>
+      
+      <div class="hero-buttons">
+        <a href="cotizador.html?tipo=tinglado" class="btn btn-dark">Cotizar mi Tinglado</a>
+        <a href="cotizador.html?tipo=galpon" class="btn btn-outline">Cotizar mi Galpón</a>
+      </div>
     </div>
+  </section>
 
-    <!-- Título y Botones a la página de Cotización -->
-    <div class="hero-text-section">
-        <h1 class="hero-title">TINGLADOS Y GALPONES</h1>
-        <p class="hero-subtitle">Fabricación a medida en todo el país, con estructuras seguras y montaje rápido.</p>
+  <!-- FEATURES BAR -->
+  <div class="features-bar">
+    <div class="features-grid">
+      <div class="feature-item">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h4>ENVÍOS A TODO EL PAÍS</h4>
+      </div>
+      <div class="feature-item">
+        <i class="fa-solid fa-landmark"></i>
+        <h4>OPCIONES DE FINANCIACIÓN</h4>
+      </div>
+      <div class="feature-item">
+        <i class="fa-solid fa-users-gear"></i>
+        <h4>SERVICIO PERSONALIZADO PRE Y POST VENTA</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <div class="container">
+
+    <!-- FOTO 2: TARJETAS VER GALPONES / VER TINGLADOS -->
+    <section class="product-section">
+      <!-- Tarjeta Galpones -->
+      <a href="galpones.html" class="product-card">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Ver Galpones" class="product-card-img">
+        <div class="product-card-footer">
+          <span>Ver Galpones</span>
+          <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+      </a>
+
+      <!-- Tarjeta Tinglados -->
+      <a href="tinglados.html" class="product-card">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Ver Tinglados" class="product-card-img">
+        <div class="product-card-footer">
+          <span>Ver Tinglados</span>
+          <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+      </a>
+    </section>
+
+    <!-- FOTO 3: TRABAJAMOS CON ESTRUCTURAS DE -->
+    <section class="structures-section">
+      <h2 class="section-title">Trabajamos con estructuras de:</h2>
+
+      <div class="structures-list">
         
-        <div class="hero-buttons">
-            <a href="cotizador.html?tipo=tinglado" class="btn-hero btn-dark">Cotizar mi Tinglado</a>
-            <a href="cotizador.html?tipo=galpon" class="btn-hero btn-outline">Cotizar mi Galpón</a>
+        <!-- Hierro Torsionado -->
+        <div class="structure-card">
+          <div class="structure-icon">
+            <svg viewBox="0 0 100 100" fill="none" stroke-width="3">
+              <path d="M10 90 L10 20 L90 20" stroke="#334155" />
+              <path d="M25 90 L25 35 L90 35" stroke="#334155" />
+              <path d="M10 20 L25 35 M10 40 L25 55 M10 60 L25 75" stroke="#64748b" />
+              <path d="M25 20 L90 20 M25 35 L90 35 M35 20 L50 35 M60 20 L75 35" stroke="#64748b" />
+            </svg>
+          </div>
+          <div class="structure-info">
+            <h3>Hierro Torsionado</h3>
+            <p>Estructura resistente y liviana, con excelente comportamiento a la tracción y flexión. Es la opción más económica y ofrece muy buena estabilidad.</p>
+          </div>
         </div>
-    </div>
 
-    <!-- Beneficios -->
-    <div class="features-section">
-        <div class="features-grid">
-            <div class="feature-item">
-                <i class="fa-solid fa-truck-fast"></i>
-                <p>ENVÍOS A TODO EL PAÍS</p>
-            </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-building-columns"></i>
-                <p>OPCIONES DE FINANCIACIÓN</p>
-            </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-users-gear"></i>
-                <p>SERVICIO PERSONALIZADO PRE Y POST VENTA</p>
-            </div>
+        <!-- Perfil U -->
+        <div class="structure-card">
+          <div class="structure-icon">
+            <svg viewBox="0 0 100 100" fill="none" stroke-width="3">
+              <path d="M15 90 L15 25 L85 25" stroke="#334155" />
+              <path d="M30 90 L30 40 L85 40" stroke="#334155" stroke-dasharray="4,2" />
+              <path d="M15 25 L30 40 M15 45 L30 60 M15 65 L30 80" stroke="#64748b" />
+              <path d="M30 25 L45 40 M60 25 L75 40" stroke="#64748b" />
+            </svg>
+          </div>
+          <div class="structure-info">
+            <h3>Perfil U</h3>
+            <p>Sistema liviano y reforzado, fácil de montar y con excelente estabilidad lateral. Tiene una mejor terminación visual y es más estético.</p>
+          </div>
         </div>
-    </div>
 
-    <div class="content">
-        <div class="card">
-            <div class="card-title">
-                <i class="fa-solid fa-list-check"></i> Especificaciones Generales
-            </div>
-            <ul class="specs-list">
-                <li><strong>Cabreadas y columnas de:</strong> hierro torsionado, alma llena, o perfil U.</li>
-                <li><strong>Perfilería para techo y laterales:</strong> Perfil de 100×50×2 mm galvanizado.</li>
-                <li><strong>Chapa de techo:</strong> Sincalum n°25, acanalada.</li>
-                <li><strong>Chapa de lateral:</strong> Sincalum n°25, acanalada.</li>
-                <li><strong>Portón corredizo incluido.</strong></li>
-            </ul>
+        <!-- Alma Llena -->
+        <div class="structure-card">
+          <div class="structure-icon">
+            <svg viewBox="0 0 100 100" fill="none" stroke-width="4">
+              <path d="M20 90 L20 30 L85 15" stroke="#334155" />
+              <path d="M20 30 L35 38 L35 90" stroke="#334155" />
+              <path d="M35 38 L85 23" stroke="#334155" />
+            </svg>
+          </div>
+          <div class="structure-info">
+            <h3>Alma Llena</h3>
+            <p>Vigas continuas de alta rigidez que permiten cubrir grandes luces sin apoyos intermedios. Es una estructura robusta, estable y muy duradera.</p>
+          </div>
         </div>
-    </div>
 
-    <!-- Botón WhatsApp -->
-    <a href="https://wa.me/5493388467395?text=Hola%20Melo%20Metal%C3%Bargica,%20quisiera%20consultar%20por%20un%20presupuesto" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+      </div>
+    </section>
 
-    <script>
-        const track = document.getElementById('carouselTrack');
-        const dots = document.querySelectorAll('.dot');
-        if (track) {
-            track.addEventListener('scroll', () => {
-                const slideWidth = track.clientWidth;
-                const index = Math.round(track.scrollLeft / slideWidth);
-                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-            });
-        }
-    </script>
+    <!-- ACERCA DE MELO METALÚRGICA -->
+    <section class="about-section">
+      <h2 class="about-title">Acerca de Melo Metalúrgica</h2>
+      <p class="about-text">
+        Melo Metalúrgica es una empresa familiar dedicada al diseño, fabricación y montaje de estructuras metálicas, galpones y tinglados de alta resistencia en General Villegas y todo el territorio nacional. Nos destacamos por el compromiso, la calidad de los materiales y la atención personalizada en cada proyecto.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/5493388412345?text=Hola,%20quisiera%20consultar%20por%20sus%20servicios%20de%20galpones%20y%20tinglados" class="whatsapp-btn" target="_blank" aria-label="Contacto por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Melo Metalúrgica - General Villegas, Buenos Aires. Todos los derechos reservados.</p>
+  </footer>
+
 </body>
 </html>
