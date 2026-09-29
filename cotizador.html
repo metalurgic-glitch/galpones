@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador Online - Melo Metalúrgica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Librería jsPDF para descarga directa de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            padding-bottom: 40px;
+        }
+
+        .top-bar {
+            background-color: #0d1527;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-card {
+            background-color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            color: #0f172a;
+            font-weight: 900;
+            font-size: 15px;
+            line-height: 1.1;
+        }
+
+        .brand-subtitle {
+            color: #334155;
+            font-weight: 700;
+            font-size: 11px;
+            line-height: 1.1;
+            margin-top: 2px;
+        }
+
+        .btn-back {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .content {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 24px 20px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #64748b;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            background-color: #f8fafc;
+            color: #0f172a;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .input:focus {
+            border-color: #2563eb;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        select.input {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 16px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 10px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-reset {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+        }
+
+        .btn-calculate {
+            background-color: #0f172a;
+            color: #ffffff;
+        }
+
+        .result-box {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .result-box h3 {
+            font-size: 13px;
+            color: #166534;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .result-price {
+            font-size: 26px;
+            font-weight: 800;
+            color: #15803d;
+            margin-bottom: 6px;
+        }
+
+        .result-details {
+            font-size: 13px;
+            color: #374151;
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+
+        .btn-action-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-pdf {
+            width: 100%;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp-send {
+            width: 100%;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="index.html" class="btn-back">
+            <i class="fa-solid fa-arrow-left"></i> Volver
+        </a>
+        <div class="brand-card">
+            <div class="brand-title">Melo Metalurgica</div>
+            <div class="brand-subtitle">General Villegas</div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="card">
+            <div class="card-title">
+                <i class="fa-solid fa-calculator" style="color: #2563eb;"></i> Cotizador
+            </div>
+
+            <form id="cotizadorForm">
+                <div class="form-group">
+                    <label class="label" for="tipoEstructura">TIPO DE ESTRUCTURA</label>
+                    <select id="tipoEstructura" class="input">
+                        <option value="galpon">Galpón ($105.000 / m²)</option>
+                        <option value="tinglado">Tinglado ($95.000 / m²)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="label" for="material">MATERIAL</label>
+                    <select id="material" class="input">
+                        <option value="Hierro Torsionado">Hierro Torsionado</option>
+                        <option value="Alma Llena">Alma Llena</option>
+                        <option value="Perfil U">Perfil U</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="label" for="alto">ALTO (MTS)</label>
+                    <input type="number" id="alto" class="input" placeholder="Ej: 5" min="1" step="0.5">
+                </div>
+
+                <div class="form-group">
+                    <label class="label" for="ancho">ANCHO (MTS)</label>
+                    <input type="number" id="ancho" class="input" placeholder="Ej: 10" min="1" step="0.5">
+                </div>
+
+                <div class="form-group">
+                    <label class="label" for="largo">LARGO (MTS)</label>
+                    <input type="number" id="largo" class="input" placeholder="Ej: 20" min="1" step="0.5">
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-reset" onclick="resetearFormulario()">Resetear</button>
+                    <button type="button" class="btn btn-calculate" onclick="calcularCotizacion()">Calcular</button>
+                </div>
+            </form>
+
+            <div id="resultado" class="result-box">
+                <h3>Presupuesto Estimado</h3>
+                <div id="precioFinal" class="result-price">$0 ARS</div>
+                <div id="detallesSuperficie" class="result-details">Superficie: 0 m²</div>
+                
+                <div class="btn-action-container">
+                    <button type="button" class="btn-pdf" onclick="descargarReciboPDF()">
+                        <i class="fa-solid fa-file-pdf"></i> Descargar Recibo PDF
+                    </button>
+
+                    <a id="linkWhatsapp" href="#" target="_blank" class="btn-whatsapp-send">
+                        <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Preselecciona el tipo según lo que presionó en el inicio
+        const urlParams = new URLSearchParams(window.location.search);
+        const tipoParam = urlParams.get('tipo');
+        if (tipoParam && (tipoParam === 'tinglado' || tipoParam === 'galpon')) {
+            document.getElementById('tipoEstructura').value = tipoParam;
+        }
+
+        // Precios por m2
+        const PRECIO_GALPON = 105000;
+        const PRECIO_TINGLADO = 95000;
+        const TELEFONO_WHATSAPP = "5493388467395";
+
+        let datosUltimaCotizacion = null;
+
+        function calcularCotizacion() {
+            const tipo = document.getElementById('tipoEstructura').value;
+            const material = document.getElementById('material').value;
+            const alto = parseFloat(document.getElementById('alto').value);
+            const ancho = parseFloat(document.getElementById('ancho').value);
+            const largo = parseFloat(document.getElementById('largo').value);
+
+            if (!ancho || !largo || !alto || ancho <= 0 || largo <= 0 || alto <= 0) {
+                alert("Por favor, ingresa alto, ancho y largo para calcular.");
+                return;
+            }
+
+            // Fórmula: (Ancho * Largo) * (1 + Alto/10)
+            const superficiePlanta = ancho * largo;
+            const m2Computables = Math.round(superficiePlanta * (1 + (alto / 10)));
+            const precioUnitario = (tipo === 'galpon') ? PRECIO_GALPON : PRECIO_TINGLADO;
+            const precioTotal = m2Computables * precioUnitario;
+
+            const precioFormateado = new Intl.NumberFormat('es-AR', {
+                style: 'currency',
+                currency: 'ARS',
+                maximumFractionDigits: 0
+            }).format(precioTotal);
+
+            // Guardar para la generación del PDF
+            datosUltimaCotizacion = {
+                tipo: tipo === 'galpon' ? 'Galpón' : 'Tinglado',
+                material: material,
+                alto: alto,
+                ancho: ancho,
+                largo: largo,
+                m2: m2Computables,
+                precioM2: precioUnitario,
+                precioTotalFormateado: precioFormateado
+            };
+
+            document.getElementById('precioFinal').innerText = precioFormateado;
+            document.getElementById('detallesSuperficie').innerHTML = 
+                `Estructura: <strong>${datosUltimaCotizacion.tipo}</strong> | Material: <strong>${material}</strong><br>` +
+                `Superficie computable: <strong>${m2Computables} m²</strong><br>` +
+                `Medidas: ${ancho}m (Ancho) × ${largo}m (Largo) × ${alto}m (Alto)`;
+            
+            document.getElementById('resultado').style.display = 'block';
+
+            // Mensaje requerido al hacer clic en WhatsApp
+            const mensajeWa = `Hola, hice una cotización y quisiera asesorarme para saber mas`;
+            document.getElementById('linkWhatsapp').href = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensajeWa)}`;
+        }
+
+        function resetearFormulario() {
+            document.getElementById('cotizadorForm').reset();
+            document.getElementById('resultado').style.display = 'none';
+            datosUltimaCotizacion = null;
+        }
+
+        // Generador formal de Recibo PDF desde el iPhone
+        function descargarReciboPDF() {
+            if (!datosUltimaCotizacion) return;
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Encabezado
+            doc.setFillColor(13, 21, 39);
+            doc.rect(0, 0, 210, 32, 'F');
+
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(20);
+            doc.setFont("helvetica", "bold");
+            doc.text("MELO METALÚRGICA", 14, 18);
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text("General Villegas - Cotización Formal", 14, 25);
+
+            // Título
+            doc.setTextColor(15, 23, 42);
+            doc.setFontSize(14);
+            doc.setFont("helvetica", "bold");
+            doc.text("RECIBO DE COTIZACIÓN PRELIMINAR", 14, 46);
+
+            const fechaActual = new Date().toLocaleDateString('es-AR');
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text(`Fecha de emisión: ${fechaActual}`, 14, 53);
+
+            doc.setLineWidth(0.5);
+            doc.setDrawColor(203, 213, 225);
+            doc.line(14, 57, 196, 57);
+
+            // Detalles
+            doc.setFontSize(11);
+            doc.setFont("helvetica", "bold");
+            doc.text("Detalles de la estructura:", 14, 68);
+
+            doc.setFont("helvetica", "normal");
+            doc.text(`• Tipo: ${datosUltimaCotizacion.tipo}`, 18, 76);
+            doc.text(`• Material: ${datosUltimaCotizacion.material}`, 18, 84);
+            doc.text(`• Dimensiones: ${datosUltimaCotizacion.ancho}m ancho x ${datosUltimaCotizacion.largo}m largo x ${datosUltimaCotizacion.alto}m alto`, 18, 92);
+            doc.text(`• Superficie computable calculada: ${datosUltimaCotizacion.m2} m²`, 18, 100);
+            doc.text(`• Valor m² computable: $${datosUltimaCotizacion.precioM2.toLocaleString('es-AR')} ARS`, 18, 108);
+
+            // Cuadro del Precio Final
+            doc.setFillColor(240, 253, 244);
+            doc.setDrawColor(187, 247, 208);
+            doc.roundedRect(14, 118, 182, 28, 3, 3, 'FD');
+
+            doc.setTextColor(21, 128, 61);
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "bold");
+            doc.text("TOTAL ESTIMADO:", 20, 128);
+            doc.setFontSize(18);
+            doc.text(datosUltimaCotizacion.precioTotalFormateado + " ARS", 20, 138);
+
+            // Pie
+            doc.setTextColor(100, 116, 139);
+            doc.setFontSize(9);
+            doc.setFont("helvetica", "italic");
+            doc.text("* Presupuesto orientativo sujeto a verificación de flete y montaje en obra.", 14, 160);
+            doc.text("Melo Metalúrgica - General Villegas | WhatsApp: +54 9 3388 46-7395", 14, 166);
+
+            doc.save(`Cotizacion_Melo_Metalurgica_${datosUltimaCotizacion.tipo}.pdf`);
+        }
+    </script>
+</body>
+</html>
