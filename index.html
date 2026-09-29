@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melo Metalúrgica - Tinglados y Galpones</title>
+    <title>Melo Metalúrgica - General Villegas</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -20,50 +20,59 @@
             padding-bottom: 40px;
         }
 
-        /* Barra Superior Marca */
+        /* Header estilo Canva */
         .top-bar {
-            background-color: #0f172a;
-            color: #ffffff;
-            padding: 14px 20px;
-            text-align: center;
-        }
-
-        .logo-box {
+            background-color: #0d1527;
+            padding: 10px 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            justify-content: flex-start;
         }
 
-        .logo-box i {
-            color: #3b82f6;
-            font-size: 22px;
+        .brand-card {
+            background-color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
         }
 
-        .logo-box span {
-            color: #3b82f6;
+        .brand-title {
+            color: #0f172a;
+            font-weight: 900;
+            font-size: 15px;
+            line-height: 1.1;
+            letter-spacing: -0.3px;
         }
 
-        /* Hero */
+        .brand-subtitle {
+            color: #334155;
+            font-weight: 700;
+            font-size: 11px;
+            line-height: 1.1;
+            margin-top: 2px;
+        }
+
+        /* Imagen Principal (Más ancha y alta) */
         .hero-image-container {
             width: 100%;
-            height: 220px;
+            height: 270px;
             overflow: hidden;
-            background-color: #0f172a;
+            background-color: #0d1527;
+            position: relative;
         }
 
         .hero-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
 
+        /* Sección Título y Botones */
         .hero-text-section {
             background-color: #ffffff;
-            padding: 32px 20px 24px;
+            padding: 30px 20px 24px;
             text-align: center;
             border-bottom: 1px solid #e2e8f0;
         }
@@ -90,15 +99,15 @@
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            max-width: 380px;
+            gap: 10px;
+            max-width: 420px;
             margin: 0 auto;
         }
 
         .btn-hero {
             flex: 1;
-            padding: 14px 16px;
-            font-size: 14px;
+            padding: 14px 10px;
+            font-size: 13.5px;
             font-weight: 800;
             border-radius: 8px;
             text-decoration: none;
@@ -107,18 +116,18 @@
         }
 
         .btn-dark {
-            background-color: #1e293b;
+            background-color: #1d2636;
             color: #ffffff;
-            border: 2px solid #1e293b;
+            border: 2px solid #1d2636;
         }
 
         .btn-outline {
             background-color: #ffffff;
-            color: #1e293b;
-            border: 2px solid #1e293b;
+            color: #1d2636;
+            border: 2px solid #1d2636;
         }
 
-        /* Beneficios */
+        /* Tres íconos de beneficios */
         .features-section {
             background-color: #f8fafc;
             padding: 28px 16px;
@@ -149,7 +158,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Galpón Terminado */
+        /* Imagen Galpón Terminado */
         .gallery-image-container {
             width: 100%;
             max-width: 480px;
@@ -363,17 +372,17 @@
 </head>
 <body>
 
-    <!-- Encabezado Marca -->
+    <!-- Header estilo Canva -->
     <div class="top-bar">
-        <div class="logo-box">
-            <i class="fa-solid fa-warehouse"></i>
-            MELO <span>METALÚRGICA</span>
+        <div class="brand-card">
+            <div class="brand-title">Melo Metalurgica</div>
+            <div class="brand-subtitle">General Villegas</div>
         </div>
     </div>
 
-    <!-- Imagen Superior Estructura -->
+    <!-- Imagen Superior (Ancha, con la estructura de Villegas) -->
     <div class="hero-image-container">
-        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Estructura de Galpón">
+        <img src="banner.jpg" alt="Estamos en General Villegas" id="bannerImg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';">
     </div>
 
     <!-- Sección Título e Interfaz -->
@@ -382,8 +391,8 @@
         <p class="hero-subtitle">Fabricación a medida en todo el país, con estructuras seguras y montaje rápido.</p>
         
         <div class="hero-buttons">
-            <a href="#cotizadorCard" class="btn-hero btn-dark">Ver Tinglados</a>
-            <a href="#cotizadorCard" class="btn-hero btn-outline">Ver Galpones</a>
+            <a href="#cotizadorCard" class="btn-hero btn-dark">Cotizar mi Tinglado</a>
+            <a href="#cotizadorCard" class="btn-hero btn-outline">Cotizar mi Galpón</a>
         </div>
     </div>
 
@@ -528,3 +537,4 @@
     </script>
 </body>
 </html>
+
