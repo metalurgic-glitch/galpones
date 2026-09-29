@@ -67,11 +67,11 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
 
         .carousel-track::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none;
         }
 
         .carousel-slide {
@@ -413,7 +413,7 @@
     <!-- Carrusel / Slider de 4 Imágenes Principal -->
     <div class="carousel-container">
         <div class="carousel-track" id="carouselTrack">
-            <!-- Imagen 1: Tu banner subido -->
+            <!-- Imagen 1: Tu banner subido con nombre exacto Título.jpeg -->
             <div class="carousel-slide">
                 <img src="Título.jpeg" alt="Estamos en General Villegas" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';">
             </div>
@@ -541,7 +541,6 @@
     </a>
 
     <script>
-        // Actualizar puntitos del carrusel al deslizar con el dedo
         const track = document.getElementById('carouselTrack');
         const dots = document.querySelectorAll('.dot');
 
@@ -555,7 +554,6 @@
             });
         }
 
-        // Lógica del Cotizador
         const PRECIO_POR_M2 = 95000;
         const TELEFONO_WHATSAPP = "5493388467395";
 
