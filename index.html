@@ -1,702 +1,521 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Melo Metalúrgica | Galpones y Tinglados</title>
-  
-  <!-- FontAwesome e Google Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melo Metalúrgica - General Villegas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
 
-  <style>
-    :root {
-      --primary-dark: #121926;
-      --primary-btn: #1a2232;
-      --accent-green: #25D366;
-      --bg-light: #f8fafc;
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --border-color: #e2e8f0;
-    }
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            padding-bottom: 40px;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        /* Header estilo Canva */
+        .top-bar {
+            background-color: #0d1527;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-main);
-      line-height: 1.5;
-    }
+        .brand-card {
+            background-color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+        }
 
-    /* ENCABEZADO */
-    header {
-      background-color: var(--primary-dark);
-      padding: 12px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+        .brand-title {
+            color: #0f172a;
+            font-weight: 900;
+            font-size: 15px;
+            line-height: 1.1;
+            letter-spacing: -0.3px;
+        }
 
-    .header-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-    }
+        .brand-subtitle {
+            color: #334155;
+            font-weight: 700;
+            font-size: 11px;
+            line-height: 1.1;
+            margin-top: 2px;
+        }
 
-    .logo-badge {
-      background-color: #ffffff;
-      padding: 6px 14px;
-      border-radius: 4px;
-      display: inline-flex;
-      flex-direction: column;
-      line-height: 1.15;
-    }
+        /* Carrusel / Slider de 4 Imágenes */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            background-color: #0d1527;
+            overflow: hidden;
+        }
 
-    .logo-main {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 1.15rem;
-      color: #000000;
-      letter-spacing: -0.3px;
-    }
+        .carousel-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
 
-    .logo-sub {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 500;
-      font-size: 0.85rem;
-      color: #334155;
-    }
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
 
-    /* BANNER CARRUSEL CON TEXTO SUPERPUESTO */
-    .hero-slider-container {
-      position: relative;
-      width: 100%;
-      height: 240px;
-      overflow: hidden;
-      background-color: #0f172a;
-    }
+        .carousel-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 270px;
+            scroll-snap-align: start;
+            position: relative;
+        }
 
-    /* CARTEL "ESTAMOS EN GENERAL VILLEGAS" */
-    .hero-badge-overlay {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      z-index: 20;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(4px);
-      padding: 8px 12px;
-      border-radius: 4px;
-      border-left: 4px solid #2563eb;
-    }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
 
-    .hero-badge-overlay .line1 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 1.1rem;
-      color: #ffffff;
-      text-transform: uppercase;
-      line-height: 1.1;
-      letter-spacing: 0.5px;
-    }
+        /* Puntitos indicadores del carrusel */
+        .carousel-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
 
-    .hero-badge-overlay .line2 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 1.25rem;
-      color: #ffffff;
-      text-transform: uppercase;
-      line-height: 1.1;
-      letter-spacing: 0.5px;
-    }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
 
-    .slider-track {
-      display: flex;
-      width: 300%;
-      height: 100%;
-      transition: transform 0.5s ease-in-out;
-    }
+        .dot.active {
+            background-color: #ffffff;
+            width: 20px;
+            border-radius: 4px;
+        }
 
-    .slide {
-      width: 33.333%;
-      height: 100%;
-      position: relative;
-    }
+        /* Sección Título y Botones */
+        .hero-text-section {
+            background-color: #ffffff;
+            padding: 30px 20px 24px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
 
-    .slide svg, .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+        .hero-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: #1e293b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
 
-    .slider-dots {
-      position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 6px;
-      z-index: 20;
-    }
+        .hero-subtitle {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.5;
+            max-width: 420px;
+            margin: 0 auto 24px;
+            font-weight: 500;
+        }
 
-    .dot {
-      width: 8px;
-      height: 8px;
-      background-color: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
 
-    .dot.active {
-      width: 22px;
-      border-radius: 10px;
-      background-color: #ffffff;
-    }
+        .btn-hero {
+            flex: 1;
+            padding: 14px 10px;
+            font-size: 13.5px;
+            font-weight: 800;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
 
-    /* TITULO Y BOTONES DE COTIZACIÓN */
-    .hero-content {
-      background-color: #ffffff;
-      padding: 24px 20px 28px 20px;
-      text-align: center;
-    }
+        .btn-dark {
+            background-color: #1d2636;
+            color: #ffffff;
+            border: 2px solid #1d2636;
+        }
 
-    .hero-content h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 1.55rem;
-      color: var(--primary-dark);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      letter-spacing: -0.3px;
-    }
+        .btn-outline {
+            background-color: #ffffff;
+            color: #1d2636;
+            border: 2px solid #1d2636;
+        }
 
-    .hero-content p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-bottom: 22px;
-      max-width: 550px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.4;
-    }
+        /* Tres íconos de beneficios */
+        .features-section {
+            background-color: #f8fafc;
+            padding: 28px 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
 
-    .hero-buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      max-width: 450px;
-      margin: 0 auto;
-    }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 480px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 14px;
-      border-radius: 8px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      flex: 1;
-      text-align: center;
-    }
+        .feature-item i {
+            font-size: 26px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
 
-    .btn-dark {
-      background-color: var(--primary-btn);
-      color: #ffffff;
-      border: 2px solid var(--primary-btn);
-    }
+        .feature-item p {
+            font-size: 11px;
+            font-weight: 800;
+            color: #334155;
+            text-transform: uppercase;
+            line-height: 1.3;
+            letter-spacing: 0.3px;
+        }
 
-    .btn-outline {
-      background-color: #ffffff;
-      color: var(--primary-dark);
-      border: 2px solid var(--primary-dark);
-    }
+        /* ==========================================
+           NUEVAS SECCIONES (FOTOS 3 Y 4)
+           ========================================== */
+        
+        .main-content {
+            max-width: 480px;
+            margin: 24px auto 0;
+            padding: 0 16px;
+        }
 
-    /* BARRA DE BENEFICIOS */
-    .features-bar {
-      background-color: #f8fafc;
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      padding: 20px 10px;
-      margin-bottom: 30px;
-    }
+        /* Tarjetas Galpones / Tinglados */
+        .category-card {
+            display: block;
+            text-decoration: none;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e2e8f0;
+            background-color: #ffffff;
+        }
 
-    .features-grid {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      text-align: center;
-    }
+        .category-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
 
-    .feature-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        .category-banner {
+            background-color: #0d1527;
+            color: #ffffff;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 700;
+        }
 
-    .feature-item i {
-      font-size: 1.6rem;
-      color: var(--primary-dark);
-      margin-bottom: 8px;
-    }
+        .category-banner i {
+            background-color: rgba(255, 255, 255, 0.15);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
 
-    .feature-item h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-      text-transform: uppercase;
-      line-height: 1.25;
-    }
+        /* Sección "Trabajamos con estructuras de:" */
+        .structures-section {
+            margin-top: 36px;
+        }
 
-    /* CONTENEDOR PRINCIPAL SECCIONES DE ABAJO */
-    .container {
-      max-width: 650px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
+        .structures-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
 
-    /* TARJETAS VER GALPONES / VER TINGLADOS */
-    .product-cards-section {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-bottom: 40px;
-    }
+        .structure-box {
+            background-color: #ffffff;
+            border: 1.5px solid #1e293b;
+            border-radius: 4px;
+            padding: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
 
-    .product-card {
-      background-color: #ffffff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      text-decoration: none;
-      display: block;
-    }
+        .structure-icon {
+            width: 70px;
+            height: 70px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .product-card-img-container {
-      width: 100%;
-      height: 200px;
-      background-color: #334155;
-    }
+        .structure-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
-    .product-card-img-container svg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+        .structure-info h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
 
-    .product-card-bar {
-      background-color: var(--primary-dark);
-      color: #ffffff;
-      padding: 14px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .structure-info p {
+            font-size: 13px;
+            color: #334155;
+            line-height: 1.4;
+            font-weight: 500;
+        }
 
-    .product-card-bar span {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
+        /* Sección Acerca De */
+        .about-section {
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #e2e8f0;
+        }
 
-    .product-card-bar .arrow-btn {
-      width: 32px;
-      height: 32px;
-      background-color: rgba(255,255,255,0.12);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-    }
+        .about-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #991b1b;
+            margin-bottom: 12px;
+        }
 
-    /* SECCIÓN TRABAJAMOS CON ESTRUCTURAS DE */
-    .structures-section {
-      margin-bottom: 40px;
-    }
+        .about-text {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.6;
+        }
 
-    .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--primary-dark);
-      margin-bottom: 20px;
-      line-height: 1.25;
-    }
-
-    .structures-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .structure-card {
-      background-color: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 4px;
-      padding: 16px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .structure-icon {
-      width: 60px;
-      height: 60px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .structure-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .structure-info h3 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 4px;
-    }
-
-    .structure-info p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    /* ACERCA DE SECCIÓN */
-    .about-section {
-      background-color: #f3f0ec;
-      border-radius: 8px;
-      padding: 22px 18px;
-      margin-bottom: 40px;
-    }
-
-    .about-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: #8b0000;
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-
-    .about-text {
-      font-size: 0.85rem;
-      color: #334155;
-      line-height: 1.5;
-    }
-
-    /* WHATSAPP FLOTANTE */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--accent-green);
-      color: white;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      z-index: 1000;
-      text-decoration: none;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      border-top: 1px solid var(--border-color);
-      background-color: #ffffff;
-    }
-  </style>
+        /* Botón Flotante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 56px;
+            height: 56px;
+            bottom: 24px;
+            right: 20px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ENCABEZADO -->
-  <header>
-    <div class="header-container">
-      <div class="logo-badge">
-        <span class="logo-main">Melo Metalurgica</span>
-        <span class="logo-sub">General Villegas</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- BANNER CARRUSEL -->
-  <div class="hero-slider-container">
-    
-    <!-- CARTEL SOBRE LA FOTO (FOTO 1 / FOTO 18) -->
-    <div class="hero-badge-overlay">
-      <div class="line1">ESTAMOS</div>
-      <div class="line2">EN GENERAL VILLEGAS</div>
-    </div>
-
-    <div class="slider-track" id="sliderTrack">
-      <!-- SLIDE 1: ESTRUCTURA GALPÓN VILlEGAS -->
-      <div class="slide">
-        <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#1e3a8a"/>
-              <stop offset="60%" stop-color="#3b82f6"/>
-              <stop offset="100%" stop-color="#93c5fd"/>
-            </linearGradient>
-            <linearGradient id="groundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#94a3b8"/>
-              <stop offset="100%" stop-color="#475569"/>
-            </linearGradient>
-          </defs>
-          <!-- Cielo y Suelo -->
-          <rect width="800" height="320" fill="url(#skyGrad)"/>
-          <rect y="320" width="800" height="130" fill="url(#groundGrad)"/>
-          <!-- Estructura de Galpón Metálico -->
-          <g stroke="#ffffff" stroke-width="3" fill="none" opacity="0.95">
-            <!-- Columnas principales -->
-            <line x1="80" y1="340" x2="80" y2="120" stroke-width="8"/>
-            <line x1="280" y1="340" x2="280" y2="100" stroke-width="8"/>
-            <line x1="520" y1="340" x2="520" y2="100" stroke-width="8"/>
-            <line x1="720" y1="340" x2="720" y2="120" stroke-width="8"/>
-            <!-- Vigas de Techo -->
-            <line x1="80" y1="120" x2="400" y2="50" stroke-width="7"/>
-            <line x1="720" y1="120" x2="400" y2="50" stroke-width="7"/>
-            <line x1="280" y1="100" x2="400" y2="50" stroke-width="5"/>
-            <line x1="520" y1="100" x2="400" y2="50" stroke-width="5"/>
-            <!-- Reticulado metálico -->
-            <path d="M80 140 L280 120 M80 160 L280 140 M80 180 L280 160 M80 200 L280 180 M80 220 L280 200 M80 240 L280 220 M80 260 L280 240 M80 280 L280 260 M80 300 L280 280" stroke-width="2"/>
-            <path d="M520 120 L720 140 M520 140 L720 160 M520 160 L720 180 M520 180 L720 200 M520 200 L720 220 M520 220 L720 240 M520 240 L720 260 M520 260 L720 280 M520 280 L720 300" stroke-width="2"/>
-            <!-- Correas de techo -->
-            <line x1="80" y1="120" x2="720" y2="120" stroke-width="4"/>
-            <line x1="130" y1="108" x2="670" y2="108" stroke-width="3"/>
-            <line x1="180" y1="96" x2="620" y2="96" stroke-width="3"/>
-            <line x1="230" y1="84" x2="570" y2="84" stroke-width="3"/>
-            <line x1="280" y1="72" x2="520" y2="72" stroke-width="3"/>
-            <line x1="340" y1="60" x2="460" y2="60" stroke-width="3"/>
-          </g>
-        </svg>
-      </div>
-
-      <!-- SLIDE 2 -->
-      <div class="slide">
-        <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="800" height="450" fill="#0f172a"/>
-          <g stroke="#38bdf8" stroke-width="3" fill="none" opacity="0.85">
-            <line x1="50" y1="380" x2="750" y2="380" stroke-width="6"/>
-            <path d="M100 380 L100 150 L400 80 L700 150 L700 380" stroke-width="8"/>
-            <path d="M100 150 L700 150 M150 138 L650 138 M200 126 L600 126 M250 114 L550 114 M300 102 L500 102 M350 90 L450 90" stroke-width="2"/>
-            <path d="M100 150 L150 380 M200 150 L250 380 M300 150 L350 380 M500 150 L450 380 M600 150 L550 380 M700 150 L650 380" stroke-width="2"/>
-          </g>
-        </svg>
-      </div>
-
-      <!-- SLIDE 3 -->
-      <div class="slide">
-        <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="800" height="450" fill="#1e293b"/>
-          <g stroke="#f59e0b" stroke-width="3" fill="none" opacity="0.9">
-            <path d="M50 390 L750 390" stroke-width="6"/>
-            <path d="M120 390 L120 180 L400 100 L680 180 L680 390" stroke-width="7"/>
-            <path d="M120 180 L680 180 M120 250 L680 250 M120 320 L680 320" stroke-width="3"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-    
-    <div class="slider-dots">
-      <span class="dot active" onclick="goToSlide(0)"></span>
-      <span class="dot" onclick="goToSlide(1)"></span>
-      <span class="dot" onclick="goToSlide(2)"></span>
-    </div>
-  </div>
-
-  <!-- TITULO Y BOTONES DE COTIZACIÓN -->
-  <section class="hero-content">
-    <h1>TINGLADOS Y GALPONES</h1>
-    <p>Fabricación a medida en todo el país, con estructuras seguras y montaje rápido.</p>
-    
-    <div class="hero-buttons">
-      <a href="https://wa.me/5493388412345?text=Hola,%20quisiera%20cotizar%20un%20Tinglado" class="btn btn-dark">Cotizar mi Tinglado</a>
-      <a href="https://wa.me/5493388412345?text=Hola,%20quisiera%20cotizar%20un%20Galp%C3%B3n" class="btn btn-outline">Cotizar mi Galpón</a>
-    </div>
-  </section>
-
-  <!-- BARRA DE BENEFICIOS -->
-  <div class="features-bar">
-    <div class="features-grid">
-      <div class="feature-item">
-        <i class="fa-solid fa-truck-fast"></i>
-        <h4>ENVÍOS A TODO EL PAÍS</h4>
-      </div>
-      <div class="feature-item">
-        <i class="fa-solid fa-landmark"></i>
-        <h4>OPCIONES DE FINANCIACIÓN</h4>
-      </div>
-      <div class="feature-item">
-        <i class="fa-solid fa-users-gear"></i>
-        <h4>SERVICIO PERSONALIZADO PRE Y POST VENTA</h4>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONTENIDO PRINCIPAL SECCIONES DE ABAJO -->
-  <div class="container">
-
-    <!-- TARJETAS CON FOTOS "VER GALPONES" / "VER TINGLADOS" -->
-    <section class="product-cards-section">
-      <!-- Tarjeta Galpones -->
-      <a href="https://wa.me/5493388412345?text=Hola,%20me%20gustar%C3%ADa%20ver%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Galpones" class="product-card">
-        <div class="product-card-img-container">
-          <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice">
-            <rect width="600" height="300" fill="#1e293b"/>
-            <path d="M50 260 L550 260" stroke="#cbd5e1" stroke-width="4"/>
-            <path d="M100 260 L100 120 L300 60 L500 120 L500 260 Z" fill="#334155" stroke="#94a3b8" stroke-width="4"/>
-            <path d="M220 260 L220 160 L380 160 L380 260 Z" fill="#0f172a" stroke="#cbd5e1" stroke-width="3"/>
-          </svg>
+    <!-- Header estilo Canva (INTACTO) -->
+    <div class="top-bar">
+        <div class="brand-card">
+            <div class="brand-title">Melo Metalurgica</div>
+            <div class="brand-subtitle">General Villegas</div>
         </div>
-        <div class="product-card-bar">
-          <span>Ver Galpones</span>
-          <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-      </a>
+    </div>
 
-      <!-- Tarjeta Tinglados -->
-      <a href="https://wa.me/5493388412345?text=Hola,%20me%20gustar%C3%ADa%20ver%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Tinglados" class="product-card">
-        <div class="product-card-img-container">
-          <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice">
-            <rect width="600" height="300" fill="#0f172a"/>
-            <path d="M80 260 L80 140 L300 80 L520 140 L520 260" fill="none" stroke="#38bdf8" stroke-width="6"/>
-            <path d="M180 260 L180 113 L300 80 L420 113 L420 260" fill="none" stroke="#0284c7" stroke-width="4"/>
-            <path d="M80 140 L520 140 M100 130 L500 130 M120 120 L480 120 M140 110 L460 110" stroke="#bae6fd" stroke-width="2"/>
-          </svg>
+    <!-- Carrusel / Slider de 4 Imágenes Principal (INTACTO) -->
+    <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+            <!-- Imagen 1 -->
+            <div class="carousel-slide">
+                <img src="titulo.jpeg.jpg" alt="Estamos en General Villegas" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';">
+            </div>
+            <!-- Imagen 2 -->
+            <div class="carousel-slide">
+                <img src="foto2.jpg" alt="Galpón Estructura Metálica" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80';">
+            </div>
+            <!-- Imagen 3 -->
+            <div class="carousel-slide">
+                <img src="foto3.jpg" alt="Tinglado Industrial" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80';">
+            </div>
+            <!-- Imagen 4 -->
+            <div class="carousel-slide">
+                <img src="foto4.jpg" alt="Montaje de Estructura" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80';">
+            </div>
         </div>
-        <div class="product-card-bar">
-          <span>Ver Tinglados</span>
-          <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+
+        <!-- Indicadores de Puntitos (INTACTO) -->
+        <div class="carousel-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
-      </a>
-    </section>
+    </div>
 
-    <!-- TRABAJAMOS CON ESTRUCTURAS DE -->
-    <section class="structures-section">
-      <h2 class="section-title">Trabajamos con estructuras de:</h2>
-
-      <div class="structures-list">
+    <!-- Sección Título e Interfaz (INTACTO) -->
+    <div class="hero-text-section">
+        <h1 class="hero-title">TINGLADOS Y GALPONES</h1>
+        <p class="hero-subtitle">Fabricación a medida en todo el país, con estructuras seguras y montaje rápido.</p>
         
-        <!-- Hierro Torsionado -->
-        <div class="structure-card">
-          <div class="structure-icon">
-            <svg viewBox="0 0 100 100" fill="none" stroke="#1e293b" stroke-width="2.5">
-              <path d="M10 85 L10 20 L90 20" />
-              <path d="M25 85 L25 35 L90 35" />
-              <path d="M10 20 L25 35 M10 40 L25 55 M10 60 L25 75" stroke="#64748b" stroke-width="1.8" />
-              <path d="M25 20 L90 20 M25 35 L90 35 M35 20 L50 35 M60 20 L75 35" stroke="#64748b" stroke-width="1.8" />
-            </svg>
-          </div>
-          <div class="structure-info">
-            <h3>Hierro Torsionado</h3>
-            <p>Estructura resistente y liviana, con excelente comportamiento a la tracción y flexión. Es la opción más económica y ofrece muy buena estabilidad.</p>
-          </div>
+        <div class="hero-buttons">
+            <a href="tinglado.html" class="btn-hero btn-dark">Cotizar mi Tinglado</a>
+            <a href="galpon.html" class="btn-hero btn-outline">Cotizar mi Galpón</a>
+        </div>
+    </div>
+
+    <!-- Tres Íconos de Beneficios (INTACTO) -->
+    <div class="features-section">
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <p>ENVÍOS A TODO EL PAÍS</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-building-columns"></i>
+                <p>OPCIONES DE FINANCIACIÓN</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-users-gear"></i>
+                <p>SERVICIO PERSONALIZADO PRE Y POST VENTA</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO NUEVO (Debajo de los 3 íconos) -->
+    <div class="main-content">
+        
+        <!-- Tarjeta Ver Galpones -->
+        <a href="galpon.html" class="category-card">
+            <img src="foto2.jpg" alt="Ver Galpones" class="category-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80';">
+            <div class="category-banner">
+                <span>Ver Galpones</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+        </a>
+
+        <!-- Tarjeta Ver Tinglados -->
+        <a href="tinglado.html" class="category-card">
+            <img src="foto3.jpg" alt="Ver Tinglados" class="category-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80';">
+            <div class="category-banner">
+                <span>Ver Tinglados</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+        </a>
+
+        <!-- Sección Tipos de Estructuras -->
+        <div class="structures-section">
+            <h2 class="structures-title">Trabajamos con estructuras de:</h2>
+
+            <!-- Hierro Torsionado -->
+            <div class="structure-box">
+                <div class="structure-icon">
+                    <svg viewBox="0 0 100 100" width="60" height="60" fill="none" stroke="#1e293b" stroke-width="4">
+                        <path d="M10 80 L30 20 L50 80" />
+                        <path d="M30 20 L90 20" />
+                        <path d="M10 80 L90 80" />
+                        <path d="M30 20 L50 80 L70 20 L90 80" />
+                    </svg>
+                </div>
+                <div class="structure-info">
+                    <h3>Hierro Torsionado</h3>
+                    <p>Estructura resistente y liviana, con excelente comportamiento a la tracción y flexión. Es la opción más económica y ofrece muy buena estabilidad.</p>
+                </div>
+            </div>
+
+            <!-- Perfil U -->
+            <div class="structure-box">
+                <div class="structure-icon">
+                    <svg viewBox="0 0 100 100" width="60" height="60" fill="none" stroke="#1e293b" stroke-width="4">
+                        <path d="M10 80 L30 20 L90 20" />
+                        <path d="M10 80 L20 80 L35 30 L90 30" />
+                        <path d="M30 20 L45 80 L60 20 L75 80 L90 20" />
+                    </svg>
+                </div>
+                <div class="structure-info">
+                    <h3>Perfil U</h3>
+                    <p>Sistema liviano y reforzado, fácil de montar y con excelente estabilidad lateral. Tiene una mejor terminación visual y es más estético.</p>
+                </div>
+            </div>
+
+            <!-- Alma Llena -->
+            <div class="structure-box">
+                <div class="structure-icon">
+                    <svg viewBox="0 0 100 100" width="60" height="60" fill="none" stroke="#1e293b" stroke-width="5">
+                        <path d="M15 80 L35 30 L90 35" />
+                        <path d="M15 80 L25 80 L40 40 L90 45" stroke-width="3" />
+                        <line x1="35" y1="30" x2="40" y2="40" />
+                        <line x1="90" y1="35" x2="90" y2="45" />
+                    </svg>
+                </div>
+                <div class="structure-info">
+                    <h3>Alma Llena</h3>
+                    <p>Vigas continuas de alta rigidez que permiten cubrir grandes luces sin apoyos intermedios. Es una estructura robusta, estable y muy duradera.</p>
+                </div>
+            </div>
         </div>
 
-        <!-- Perfil U -->
-        <div class="structure-card">
-          <div class="structure-icon">
-            <svg viewBox="0 0 100 100" fill="none" stroke="#1e293b" stroke-width="2.5">
-              <path d="M15 85 L15 25 L85 25" />
-              <path d="M30 85 L30 40 L85 40" />
-              <path d="M15 25 L30 40 M15 45 L30 60 M15 65 L30 80" stroke="#64748b" stroke-width="1.8" />
-              <path d="M30 25 L45 40 M60 25 L75 40" stroke="#64748b" stroke-width="1.8" />
-            </svg>
-          </div>
-          <div class="structure-info">
-            <h3>Perfil U</h3>
-            <p>Sistema liviano y reinforced, fácil de montar y con excelente estabilidad lateral. Tiene una mejor terminación visual y es más estético.</p>
-          </div>
+        <!-- Sección Acerca De -->
+        <div class="about-section">
+            <h2 class="about-title">Acerca de Melo Metalúrgica</h2>
+            <p class="about-text">Melo Metalúrgica es una empresa dedicada a la fabricación y montaje de estructuras metálicas, galpones y tinglados de alta calidad con cobertura en General Villegas y todo el país.</p>
         </div>
 
-        <!-- Alma Llena -->
-        <div class="structure-card">
-          <div class="structure-icon">
-            <svg viewBox="0 0 100 100" fill="#475569" stroke="#1e293b" stroke-width="2">
-              <path d="M20 85 L20 30 L85 15 L85 25 L35 38 L35 85 Z" />
-            </svg>
-          </div>
-          <div class="structure-info">
-            <h3>Alma Llena</h3>
-            <p>Vigas continuas de alta rigidez que permiten cubrir grandes luces sin apoyos intermedios. Es una estructura robusta, estable y muy duradera.</p>
-          </div>
-        </div>
+    </div>
 
-      </div>
-    </section>
+    <!-- Botón Flotante de WhatsApp (INTACTO) -->
+    <a id="whatsappFloat" href="https://wa.me/5493388467395?text=Hola%20Melo%20Metal%C3%Bargica,%20quisiera%20consultar%20por%20un%20galp%C3%B3n" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <!-- ACERCA DE MELO METALÚRGICA -->
-    <section class="about-section">
-      <h2 class="about-title">Acerca de Melo Metalúrgica</h2>
-      <p class="about-text">
-        Melo Metalúrgica es una empresa dedicada al diseño, fabricación y montaje de estructuras metálicas, galpones y tinglados de alta resistencia en General Villegas y todo el país. Nos destacamos por el compromiso, la calidad de nuestros materiales y la atención personalizada.
-      </p>
-    </section>
+    <script>
+        const track = document.getElementById('carouselTrack');
+        const dots = document.querySelectorAll('.dot');
 
-  </div>
-
-  <!-- BOTÓN FLOTANTE WHATSAPP -->
-  <a href="https://wa.me/5493388412345?text=Hola,%20quisiera%20consultar%20por%20sus%20servicios%20de%20galpones%20y%20tinglados" class="whatsapp-btn" target="_blank" aria-label="Contacto por WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2026 Melo Metalúrgica - General Villegas, Buenos Aires.</p>
-  </footer>
-
-  <!-- SCRIPT CARRUSEL -->
-  <script>
-    let currentSlide = 0;
-    const track = document.getElementById('sliderTrack');
-    const dots = document.querySelectorAll('.dot');
-
-    function goToSlide(index) {
-      currentSlide = index;
-      track.style.transform = `translateX(-${currentSlide * 33.333}%)`;
-      dots.forEach((dot, idx) => {
-        if(idx === currentSlide) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
+        if (track) {
+            track.addEventListener('scroll', () => {
+                const slideWidth = track.clientWidth;
+                const index = Math.round(track.scrollLeft / slideWidth);
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            });
         }
-      });
-    }
-
-    setInterval(() => {
-      currentSlide = (currentSlide + 1) % 3;
-      goToSlide(currentSlide);
-    }, 3500);
-  </script>
-
+    </script>
 </body>
 </html>
