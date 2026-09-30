@@ -6,7 +6,6 @@
     <title>Cotizador Online - Melo Metalúrgica</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Librería jsPDF para descarga directa de PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         * {
@@ -64,14 +63,12 @@
             gap: 6px;
         }
 
-        /* Contenedor Principal */
         .content {
             max-width: 480px;
             margin: 0 auto;
             padding: 20px 16px;
         }
 
-        /* Etiqueta de Categoría Superior */
         .category-tag {
             font-size: 18px;
             font-weight: 900;
@@ -81,7 +78,7 @@
             margin-bottom: 16px;
         }
 
-        /* Galería de Imágenes estilo Foto 2 */
+        /* Galería de Imágenes */
         .gallery-container {
             margin-bottom: 24px;
         }
@@ -128,13 +125,13 @@
 
         .thumbnails-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 6px;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 8px;
         }
 
         .thumb {
             width: 100%;
-            height: 50px;
+            height: 55px;
             border-radius: 6px;
             object-fit: cover;
             cursor: pointer;
@@ -148,7 +145,7 @@
             border-color: #2563eb;
         }
 
-        /* Sección Especificaciones Técnicas */
+        /* Especificaciones */
         .specs-section {
             margin-bottom: 24px;
         }
@@ -185,7 +182,6 @@
             top: -2px;
         }
 
-        /* Subtítulo previo al cotizador */
         .cotiza-heading {
             font-size: 20px;
             font-weight: 900;
@@ -194,7 +190,7 @@
             margin-bottom: 16px;
         }
 
-        /* Card del Cotizador */
+        /* Card Cotizador */
         .card {
             background: #ffffff;
             border-radius: 18px;
@@ -348,7 +344,6 @@
             font-size: 14px;
         }
 
-        /* Botón Flotante WhatsApp */
         .whatsapp-float {
             position: fixed;
             width: 56px;
@@ -371,7 +366,7 @@
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- Header -->
     <div class="top-bar">
         <a href="index.html" class="btn-back">
             <i class="fa-solid fa-arrow-left"></i> Volver
@@ -384,29 +379,23 @@
 
     <div class="content">
 
-        <!-- Categoría Superior -->
         <div id="topCategoryTag" class="category-tag">GALPONES</div>
 
-        <!-- Galería de Fotos -->
+        <!-- Galería de Fotos dinámica -->
         <div class="gallery-container">
             <div class="gallery-main">
-                <img id="mainGalleryImg" src="foto2.jpg" alt="Melo Metalúrgica Galpón" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80';">
+                <img id="mainGalleryImg" src="foto2.jpg.JPG" alt="Melo Metalúrgica">
                 <button type="button" class="gallery-arrow prev" onclick="changeSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
                 <button type="button" class="gallery-arrow next" onclick="changeSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
 
             <!-- Miniaturas -->
-            <div class="thumbnails-grid">
-                <img src="foto2.jpg" class="thumb active" onclick="setGalleryImage(0, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=300&q=80';">
-                <img src="foto3.jpg" class="thumb" onclick="setGalleryImage(1, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=300&q=80';">
-                <img src="foto4.jpg" class="thumb" onclick="setGalleryImage(2, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=300&q=80';">
-                <img src="titulo.jpeg.jpg" class="thumb" onclick="setGalleryImage(3, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=300&q=80';">
-                <img src="foto2.jpg" class="thumb" onclick="setGalleryImage(4, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=300&q=80';">
-                <img src="foto3.jpg" class="thumb" onclick="setGalleryImage(5, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=300&q=80';">
+            <div class="thumbnails-grid" id="thumbnailsGrid">
+                <!-- Se cargan dinámicamente según el tipo -->
             </div>
         </div>
 
-        <!-- Especificaciones Técnicas -->
+        <!-- Especificaciones -->
         <div class="specs-section">
             <h1 id="pageTitle" class="specs-title">Galpones</h1>
             <ul class="specs-list">
@@ -418,7 +407,6 @@
             </ul>
         </div>
 
-        <!-- Encabezado del Cotizador -->
         <h2 id="cotizaHeading" class="cotiza-heading">Cotizá tu Galpón</h2>
 
         <!-- Formulario Cotizador -->
@@ -431,8 +419,8 @@
                 <div class="form-group">
                     <label class="label" for="tipoEstructura">TIPO DE ESTRUCTURA</label>
                     <select id="tipoEstructura" class="input" onchange="actualizarInterfazSegunTipo(this.value)">
-                        <option value="galpon">Galpón ($105.000 / m²)</option>
-                        <option value="tinglado">Tinglado ($95.000 / m²)</option>
+                        <option value="galpon">Galpón</option>
+                        <option value="tinglado">Tinglado</option>
                     </select>
                 </div>
 
@@ -485,26 +473,48 @@
 
     </div>
 
-    <!-- Botón Flotante WhatsApp -->
+    <!-- WhatsApp Flotante -->
     <a id="whatsappFloat" href="https://wa.me/5493388467395?text=Hola%20Melo%20Metal%C3%Bargica,%20quisiera%20consultar%20por%20un%20presupuesto" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Imágenes para el slider
-        const imagenesGaleria = [
-            'foto2.jpg',
-            'foto3.jpg',
-            'foto4.jpg',
+        // CONFIGURACIÓN DE IMÁGENES POR SEPARADO
+        const galeriaGalpon = [
+            'foto2.jpg.JPG',
             'titulo.jpeg.jpg',
-            'foto2.jpg',
-            'foto3.jpg'
+            'foto4.jpg.jpg'
         ];
+
+        const galeriaTinglado = [
+            'foto5.JPG',
+            'foto3.jpg.JPG',
+            'titulo.jpeg.jpg'
+        ];
+
+        let imagenesActuales = galeriaGalpon;
         let currentSlideIndex = 0;
+
+        function cargarGaleria(tipo) {
+            imagenesActuales = (tipo === 'tinglado') ? galeriaTinglado : galeriaGalpon;
+            currentSlideIndex = 0;
+
+            const mainImg = document.getElementById('mainGalleryImg');
+            if (mainImg && imagenesActuales.length > 0) {
+                mainImg.src = imagenesActuales[0];
+            }
+
+            const grid = document.getElementById('thumbnailsGrid');
+            if (grid) {
+                grid.innerHTML = imagenesActuales.map((img, idx) => `
+                    <img src="${img}" class="thumb ${idx === 0 ? 'active' : ''}" onclick="setGalleryImage(${idx}, this)">
+                `).join('');
+            }
+        }
 
         function setGalleryImage(index, element) {
             currentSlideIndex = index;
-            document.getElementById('mainGalleryImg').src = imagenesGaleria[index];
+            document.getElementById('mainGalleryImg').src = imagenesActuales[index];
             const thumbs = document.querySelectorAll('.thumb');
             thumbs.forEach(t => t.classList.remove('active'));
             if (element) {
@@ -516,12 +526,11 @@
 
         function changeSlide(direction) {
             currentSlideIndex += direction;
-            if (currentSlideIndex < 0) currentSlideIndex = imagenesGaleria.length - 1;
-            if (currentSlideIndex >= imagenesGaleria.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = imagenesActuales.length - 1;
+            if (currentSlideIndex >= imagenesActuales.length) currentSlideIndex = 0;
             setGalleryImage(currentSlideIndex);
         }
 
-        // Cambio de textos dinámico
         function actualizarInterfazSegunTipo(tipo) {
             const topCategoryTag = document.getElementById('topCategoryTag');
             const pageTitle = document.getElementById('pageTitle');
@@ -536,20 +545,24 @@
                 pageTitle.innerText = 'Galpones';
                 cotizaHeading.innerText = 'Cotizá tu Galpón';
             }
+
+            cargarGaleria(tipo);
         }
 
-        // Lectura de parámetro en URL
+        // Lectura de parámetro URL
         const urlParams = new URLSearchParams(window.location.search);
         const tipoParam = urlParams.get('tipo');
 
         if (tipoParam === 'tinglado' || tipoParam === 'galpon') {
             document.getElementById('tipoEstructura').value = tipoParam;
             actualizarInterfazSegunTipo(tipoParam);
+        } else {
+            actualizarInterfazSegunTipo('galpon');
         }
 
-        // Lógica de Cotización
+        // PRECIOS ACTUALIZADOS POR M2
         const PRECIO_GALPON = 105000;
-        const PRECIO_TINGLADO = 95000;
+        const PRECIO_TINGLADO = 85000;
         const TELEFONO_WHATSAPP = "5493388467395";
 
         let datosUltimaCotizacion = null;
@@ -596,7 +609,7 @@
             
             document.getElementById('resultado').style.display = 'block';
 
-            const mensajeWa = `Hola, hice una cotización y quisiera asesorarme para saber más.`;
+            const mensajeWa = `Hola, hice una cotización de un ${datosUltimaCotizacion.tipo} y quisiera asesorarme.`;
             document.getElementById('linkWhatsapp').href = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensajeWa)}`;
         }
 
@@ -606,7 +619,6 @@
             datosUltimaCotizacion = null;
         }
 
-        // Generador de Recibo PDF
         function descargarReciboPDF() {
             if (!datosUltimaCotizacion) return;
 
@@ -671,4 +683,3 @@
     </script>
 </body>
 </html>
-
