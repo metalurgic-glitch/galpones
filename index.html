@@ -203,10 +203,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* ==========================================
-           NUEVAS SECCIONES (FOTOS 3 Y 4)
-           ========================================== */
-        
+        /* Contenido Principal */
         .main-content {
             max-width: 480px;
             margin: 24px auto 0;
@@ -287,12 +284,6 @@
             justify-content: center;
         }
 
-        .structure-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
         .structure-info h3 {
             font-size: 18px;
             font-weight: 800;
@@ -350,7 +341,7 @@
 </head>
 <body>
 
-    <!-- Header estilo Canva (INTACTO) -->
+    <!-- Header estilo Canva -->
     <div class="top-bar">
         <div class="brand-card">
             <div class="brand-title">Melo Metalurgica</div>
@@ -358,7 +349,7 @@
         </div>
     </div>
 
-    <!-- Carrusel / Slider de 4 Imágenes Principal (INTACTO) -->
+    <!-- Carrusel / Slider de 4 Imágenes Principal -->
     <div class="carousel-container">
         <div class="carousel-track" id="carouselTrack">
             <!-- Imagen 1 -->
@@ -379,7 +370,7 @@
             </div>
         </div>
 
-        <!-- Indicadores de Puntitos (INTACTO) -->
+        <!-- Indicadores de Puntitos -->
         <div class="carousel-dots">
             <div class="dot active"></div>
             <div class="dot"></div>
@@ -388,7 +379,7 @@
         </div>
     </div>
 
-    <!-- Sección Título e Interfaz (INTACTO) -->
+    <!-- Sección Título e Interfaz -->
     <div class="hero-text-section">
         <h1 class="hero-title">TINGLADOS Y GALPONES</h1>
         <p class="hero-subtitle">Fabricación a medida en todo el país, con estructuras seguras y montaje rápido.</p>
@@ -399,7 +390,7 @@
         </div>
     </div>
 
-    <!-- Tres Íconos de Beneficios (INTACTO) -->
+    <!-- Tres Íconos de Beneficios -->
     <div class="features-section">
         <div class="features-grid">
             <div class="feature-item">
@@ -417,7 +408,7 @@
         </div>
     </div>
 
-    <!-- CONTENIDO NUEVO (Debajo de los 3 íconos) -->
+    <!-- CONTENIDO NUEVO -->
     <div class="main-content">
         
         <!-- Tarjeta Ver Galpones -->
@@ -445,11 +436,15 @@
             <!-- Hierro Torsionado -->
             <div class="structure-box">
                 <div class="structure-icon">
-                    <svg viewBox="0 0 100 100" width="60" height="60" fill="none" stroke="#1e293b" stroke-width="4">
-                        <path d="M10 80 L30 20 L50 80" />
-                        <path d="M30 20 L90 20" />
-                        <path d="M10 80 L90 80" />
-                        <path d="M30 20 L50 80 L70 20 L90 80" />
+                    <svg viewBox="0 0 100 100" width="65" height="65" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Perfil exterior -->
+                        <path d="M12 32 L78 16 L78 85" />
+                        <path d="M12 46 L64 34 L64 85" />
+                        <line x1="64" y1="34" x2="78" y2="16" />
+                        <!-- Reticulado viga -->
+                        <polyline points="12,32 23,43 33,27 44,40 54,23 64,34" />
+                        <!-- Reticulado columna -->
+                        <polyline points="64,34 78,44 64,54 78,64 64,74 78,84" />
                     </svg>
                 </div>
                 <div class="structure-info">
@@ -461,10 +456,15 @@
             <!-- Perfil U -->
             <div class="structure-box">
                 <div class="structure-icon">
-                    <svg viewBox="0 0 100 100" width="60" height="60" fill="none" stroke="#1e293b" stroke-width="4">
-                        <path d="M10 80 L30 20 L90 20" />
-                        <path d="M10 80 L20 80 L35 30 L90 30" />
-                        <path d="M30 20 L45 80 L60 20 L75 80 L90 20" />
+                    <svg viewBox="0 0 100 100" width="65" height="65" fill="none" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Perfil curva suave exterior -->
+                        <path d="M12 35 Q 45 28 78 16 L78 85" />
+                        <path d="M12 49 Q 42 42 64 34 L64 85" />
+                        <line x1="64" y1="34" x2="78" y2="16" />
+                        <!-- Reticulado viga -->
+                        <polyline points="12,35 23,45 33,31 44,42 54,26 64,34" />
+                        <!-- Reticulado columna -->
+                        <polyline points="64,34 78,44 64,54 78,64 64,74 78,84" />
                     </svg>
                 </div>
                 <div class="structure-info">
@@ -476,11 +476,12 @@
             <!-- Alma Llena -->
             <div class="structure-box">
                 <div class="structure-icon">
-                    <svg viewBox="0 0 100 100" width="60" height="60" fill="none" stroke="#1e293b" stroke-width="5">
-                        <path d="M15 80 L35 30 L90 35" />
-                        <path d="M15 80 L25 80 L40 40 L90 45" stroke-width="3" />
-                        <line x1="35" y1="30" x2="40" y2="40" />
-                        <line x1="90" y1="35" x2="90" y2="45" />
+                    <svg viewBox="0 0 100 100" width="65" height="65" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Estructura sólida de perfil I con cartela -->
+                        <path d="M12 28 L78 14 L78 85 L62 85 L62 42 L12 50 Z" fill="#64748b" fill-opacity="0.3" />
+                        <path d="M12 28 L78 14 L78 85 L62 85 L62 42 L12 50 Z" stroke="#1e293b" stroke-width="2" />
+                        <!-- Unión de la cartela -->
+                        <line x1="62" y1="42" x2="78" y2="14" stroke="#1e293b" stroke-width="2" />
                     </svg>
                 </div>
                 <div class="structure-info">
@@ -498,7 +499,7 @@
 
     </div>
 
-    <!-- Botón Flotante de WhatsApp (INTACTO) -->
+    <!-- Botón Flotante de WhatsApp -->
     <a id="whatsappFloat" href="https://wa.me/5493388467395?text=Hola%20Melo%20Metal%C3%Bargica,%20quisiera%20consultar%20por%20un%20galp%C3%B3n" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
