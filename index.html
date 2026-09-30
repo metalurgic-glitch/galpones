@@ -33,7 +33,7 @@
       line-height: 1.5;
     }
 
-    /* ENCABEZADO (FOTO 1) */
+    /* ENCABEZADO */
     header {
       background-color: var(--primary-dark);
       padding: 12px 16px;
@@ -73,13 +73,46 @@
       color: #334155;
     }
 
-    /* CARRUSEL / BANNER (FOTO 1) */
+    /* BANNER CARRUSEL CON TEXTO SUPERPUESTO */
     .hero-slider-container {
       position: relative;
       width: 100%;
-      height: 220px;
+      height: 240px;
       overflow: hidden;
-      background-color: #000;
+      background-color: #0f172a;
+    }
+
+    /* CARTEL "ESTAMOS EN GENERAL VILLEGAS" */
+    .hero-badge-overlay {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 20;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+      padding: 8px 12px;
+      border-radius: 4px;
+      border-left: 4px solid #2563eb;
+    }
+
+    .hero-badge-overlay .line1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-badge-overlay .line2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
     }
 
     .slider-track {
@@ -95,7 +128,7 @@
       position: relative;
     }
 
-    .slide img {
+    .slide svg, .slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -109,7 +142,7 @@
       transform: translateX(-50%);
       display: flex;
       gap: 6px;
-      z-index: 10;
+      z-index: 20;
     }
 
     .dot {
@@ -127,7 +160,7 @@
       background-color: #ffffff;
     }
 
-    /* TITULO Y BOTONES DE COTIZACION (FOTO 1) */
+    /* TITULO Y BOTONES DE COTIZACIÓN */
     .hero-content {
       background-color: #ffffff;
       padding: 24px 20px 28px 20px;
@@ -190,7 +223,7 @@
       border: 2px solid var(--primary-dark);
     }
 
-    /* BARRA DE BENEFICIOS (FOTO 1) */
+    /* BARRA DE BENEFICIOS */
     .features-bar {
       background-color: #f8fafc;
       border-top: 1px solid var(--border-color);
@@ -229,14 +262,14 @@
       line-height: 1.25;
     }
 
-    /* CONTENEDOR PRINCIPAL SECCIONES FOTO 3 Y 4 */
+    /* CONTENEDOR PRINCIPAL SECCIONES DE ABAJO */
     .container {
       max-width: 650px;
       margin: 0 auto;
       padding: 0 16px;
     }
 
-    /* TARJETAS VER GALPONES / VER TINGLADOS (FOTO 3) */
+    /* TARJETAS VER GALPONES / VER TINGLADOS */
     .product-cards-section {
       display: flex;
       flex-direction: column;
@@ -253,11 +286,16 @@
       display: block;
     }
 
-    .product-card-img {
+    .product-card-img-container {
       width: 100%;
       height: 200px;
+      background-color: #334155;
+    }
+
+    .product-card-img-container svg {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .product-card-bar {
@@ -286,7 +324,7 @@
       font-size: 0.95rem;
     }
 
-    /* SECCION ESTRUCTURAS DE (FOTO 4) */
+    /* SECCIÓN TRABAJAMOS CON ESTRUCTURAS DE */
     .structures-section {
       margin-bottom: 40px;
     }
@@ -344,7 +382,7 @@
       line-height: 1.4;
     }
 
-    /* ACERCA DE SECCION (FOTO 4) */
+    /* ACERCA DE SECCIÓN */
     .about-section {
       background-color: #f3f0ec;
       border-radius: 8px;
@@ -399,7 +437,7 @@
 </head>
 <body>
 
-  <!-- ENCABEZADO (FOTO 1) -->
+  <!-- ENCABEZADO -->
   <header>
     <div class="header-container">
       <div class="logo-badge">
@@ -409,17 +447,82 @@
     </div>
   </header>
 
-  <!-- BANNER SLIDER (FOTO 1) -->
+  <!-- BANNER CARRUSEL -->
   <div class="hero-slider-container">
+    
+    <!-- CARTEL SOBRE LA FOTO (FOTO 1 / FOTO 18) -->
+    <div class="hero-badge-overlay">
+      <div class="line1">ESTAMOS</div>
+      <div class="line2">EN GENERAL VILLEGAS</div>
+    </div>
+
     <div class="slider-track" id="sliderTrack">
+      <!-- SLIDE 1: ESTRUCTURA GALPÓN VILlEGAS -->
       <div class="slide">
-        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1000&q=80" alt="Estructura Industrial">
+        <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1e3a8a"/>
+              <stop offset="60%" stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#93c5fd"/>
+            </linearGradient>
+            <linearGradient id="groundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#94a3b8"/>
+              <stop offset="100%" stop-color="#475569"/>
+            </linearGradient>
+          </defs>
+          <!-- Cielo y Suelo -->
+          <rect width="800" height="320" fill="url(#skyGrad)"/>
+          <rect y="320" width="800" height="130" fill="url(#groundGrad)"/>
+          <!-- Estructura de Galpón Metálico -->
+          <g stroke="#ffffff" stroke-width="3" fill="none" opacity="0.95">
+            <!-- Columnas principales -->
+            <line x1="80" y1="340" x2="80" y2="120" stroke-width="8"/>
+            <line x1="280" y1="340" x2="280" y2="100" stroke-width="8"/>
+            <line x1="520" y1="340" x2="520" y2="100" stroke-width="8"/>
+            <line x1="720" y1="340" x2="720" y2="120" stroke-width="8"/>
+            <!-- Vigas de Techo -->
+            <line x1="80" y1="120" x2="400" y2="50" stroke-width="7"/>
+            <line x1="720" y1="120" x2="400" y2="50" stroke-width="7"/>
+            <line x1="280" y1="100" x2="400" y2="50" stroke-width="5"/>
+            <line x1="520" y1="100" x2="400" y2="50" stroke-width="5"/>
+            <!-- Reticulado metálico -->
+            <path d="M80 140 L280 120 M80 160 L280 140 M80 180 L280 160 M80 200 L280 180 M80 220 L280 200 M80 240 L280 220 M80 260 L280 240 M80 280 L280 260 M80 300 L280 280" stroke-width="2"/>
+            <path d="M520 120 L720 140 M520 140 L720 160 M520 160 L720 180 M520 180 L720 200 M520 200 L720 220 M520 220 L720 240 M520 240 L720 260 M520 260 L720 280 M520 280 L720 300" stroke-width="2"/>
+            <!-- Correas de techo -->
+            <line x1="80" y1="120" x2="720" y2="120" stroke-width="4"/>
+            <line x1="130" y1="108" x2="670" y2="108" stroke-width="3"/>
+            <line x1="180" y1="96" x2="620" y2="96" stroke-width="3"/>
+            <line x1="230" y1="84" x2="570" y2="84" stroke-width="3"/>
+            <line x1="280" y1="72" x2="520" y2="72" stroke-width="3"/>
+            <line x1="340" y1="60" x2="460" y2="60" stroke-width="3"/>
+          </g>
+        </svg>
       </div>
+
+      <!-- SLIDE 2 -->
       <div class="slide">
-        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80" alt="Galpón Metalúrgico">
+        <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="800" height="450" fill="#0f172a"/>
+          <g stroke="#38bdf8" stroke-width="3" fill="none" opacity="0.85">
+            <line x1="50" y1="380" x2="750" y2="380" stroke-width="6"/>
+            <path d="M100 380 L100 150 L400 80 L700 150 L700 380" stroke-width="8"/>
+            <path d="M100 150 L700 150 M150 138 L650 138 M200 126 L600 126 M250 114 L550 114 M300 102 L500 102 M350 90 L450 90" stroke-width="2"/>
+            <path d="M100 150 L150 380 M200 150 L250 380 M300 150 L350 380 M500 150 L450 380 M600 150 L550 380 M700 150 L650 380" stroke-width="2"/>
+          </g>
+        </svg>
       </div>
+
+      <!-- SLIDE 3 -->
       <div class="slide">
-        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Montaje de Tinglado">
+        <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="800" height="450" fill="#1e293b"/>
+          <g stroke="#f59e0b" stroke-width="3" fill="none" opacity="0.9">
+            <path d="M50 390 L750 390" stroke-width="6"/>
+            <path d="M120 390 L120 180 L400 100 L680 180 L680 390" stroke-width="7"/>
+            <path d="M120 180 L680 180 M120 250 L680 250 M120 320 L680 320" stroke-width="3"/>
+          </g>
+        </svg>
       </div>
     </div>
     
@@ -430,7 +533,7 @@
     </div>
   </div>
 
-  <!-- TITULO Y BOTONES DE COTIZACION (FOTO 1) -->
+  <!-- TITULO Y BOTONES DE COTIZACIÓN -->
   <section class="hero-content">
     <h1>TINGLADOS Y GALPONES</h1>
     <p>Fabricación a medida en todo el país, con estructuras seguras y montaje rápido.</p>
@@ -441,7 +544,7 @@
     </div>
   </section>
 
-  <!-- BARRA DE BENEFICIOS (FOTO 1) -->
+  <!-- BARRA DE BENEFICIOS -->
   <div class="features-bar">
     <div class="features-grid">
       <div class="feature-item">
@@ -459,14 +562,21 @@
     </div>
   </div>
 
-  <!-- CONTENIDO PRINCIPAL (FOTOS 3 Y 4) -->
+  <!-- CONTENIDO PRINCIPAL SECCIONES DE ABAJO -->
   <div class="container">
 
-    <!-- TARJETAS CON FOTOS "VER GALPONES" / "VER TINGLADOS" (FOTO 3) -->
+    <!-- TARJETAS CON FOTOS "VER GALPONES" / "VER TINGLADOS" -->
     <section class="product-cards-section">
       <!-- Tarjeta Galpones -->
       <a href="https://wa.me/5493388412345?text=Hola,%20me%20gustar%C3%ADa%20ver%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Galpones" class="product-card">
-        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Galpón Metalúrgico" class="product-card-img">
+        <div class="product-card-img-container">
+          <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="300" fill="#1e293b"/>
+            <path d="M50 260 L550 260" stroke="#cbd5e1" stroke-width="4"/>
+            <path d="M100 260 L100 120 L300 60 L500 120 L500 260 Z" fill="#334155" stroke="#94a3b8" stroke-width="4"/>
+            <path d="M220 260 L220 160 L380 160 L380 260 Z" fill="#0f172a" stroke="#cbd5e1" stroke-width="3"/>
+          </svg>
+        </div>
         <div class="product-card-bar">
           <span>Ver Galpones</span>
           <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
@@ -475,7 +585,14 @@
 
       <!-- Tarjeta Tinglados -->
       <a href="https://wa.me/5493388412345?text=Hola,%20me%20gustar%C3%ADa%20ver%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Tinglados" class="product-card">
-        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Tinglado Estructura" class="product-card-img">
+        <div class="product-card-img-container">
+          <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="300" fill="#0f172a"/>
+            <path d="M80 260 L80 140 L300 80 L520 140 L520 260" fill="none" stroke="#38bdf8" stroke-width="6"/>
+            <path d="M180 260 L180 113 L300 80 L420 113 L420 260" fill="none" stroke="#0284c7" stroke-width="4"/>
+            <path d="M80 140 L520 140 M100 130 L500 130 M120 120 L480 120 M140 110 L460 110" stroke="#bae6fd" stroke-width="2"/>
+          </svg>
+        </div>
         <div class="product-card-bar">
           <span>Ver Tinglados</span>
           <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
@@ -483,7 +600,7 @@
       </a>
     </section>
 
-    <!-- TRABAJAMOS CON ESTRUCTURAS DE (FOTO 4) -->
+    <!-- TRABAJAMOS CON ESTRUCTURAS DE -->
     <section class="structures-section">
       <h2 class="section-title">Trabajamos con estructuras de:</h2>
 
@@ -517,7 +634,7 @@
           </div>
           <div class="structure-info">
             <h3>Perfil U</h3>
-            <p>Sistema liviano y reforzado, fácil de montar y con excelente estabilidad lateral. Tiene una mejor terminación visual y es más estético.</p>
+            <p>Sistema liviano y reinforced, fácil de montar y con excelente estabilidad lateral. Tiene una mejor terminación visual y es más estético.</p>
           </div>
         </div>
 
@@ -537,7 +654,7 @@
       </div>
     </section>
 
-    <!-- ACERCA DE MELO METALÚRGICA (FOTO 4) -->
+    <!-- ACERCA DE MELO METALÚRGICA -->
     <section class="about-section">
       <h2 class="about-title">Acerca de Melo Metalúrgica</h2>
       <p class="about-text">
@@ -557,7 +674,7 @@
     <p>&copy; 2026 Melo Metalúrgica - General Villegas, Buenos Aires.</p>
   </footer>
 
-  <!-- SCRIPT CARRUSEL AUTOMATICO -->
+  <!-- SCRIPT CARRUSEL -->
   <script>
     let currentSlide = 0;
     const track = document.getElementById('sliderTrack');
