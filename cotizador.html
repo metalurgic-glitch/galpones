@@ -22,6 +22,7 @@
             padding-bottom: 40px;
         }
 
+        /* Topbar Header */
         .top-bar {
             background-color: #0d1527;
             padding: 12px 16px;
@@ -63,12 +64,137 @@
             gap: 6px;
         }
 
+        /* Contenedor Principal */
         .content {
             max-width: 480px;
             margin: 0 auto;
-            padding: 16px;
+            padding: 20px 16px;
         }
 
+        /* Etiqueta de Categoría Superior */
+        .category-tag {
+            font-size: 18px;
+            font-weight: 900;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        /* Galería de Imágenes estilo Foto 2 */
+        .gallery-container {
+            margin-bottom: 24px;
+        }
+
+        .gallery-main {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            background-color: #e2e8f0;
+        }
+
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            background-color: #ffffff;
+            color: #0f172a;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 5;
+        }
+
+        .gallery-arrow.prev { left: 10px; }
+        .gallery-arrow.next { right: 10px; }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+        }
+
+        .thumb {
+            width: 100%;
+            height: 50px;
+            border-radius: 6px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.7;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .thumb.active {
+            opacity: 1;
+            border-color: #2563eb;
+        }
+
+        /* Sección Especificaciones Técnicas */
+        .specs-section {
+            margin-bottom: 24px;
+        }
+
+        .specs-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 14px;
+        }
+
+        .specs-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .specs-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 14.5px;
+            color: #334155;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .specs-list li::before {
+            content: "•";
+            position: absolute;
+            left: 4px;
+            color: #0f172a;
+            font-size: 18px;
+            top: -2px;
+        }
+
+        /* Subtítulo previo al cotizador */
+        .cotiza-heading {
+            font-size: 20px;
+            font-weight: 900;
+            color: #0f172a;
+            margin-top: 28px;
+            margin-bottom: 16px;
+        }
+
+        /* Card del Cotizador */
         .card {
             background: #ffffff;
             border-radius: 18px;
@@ -121,7 +247,7 @@
 
         select.input {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 14px center;
             background-size: 16px;
@@ -221,10 +347,31 @@
             font-weight: 700;
             font-size: 14px;
         }
+
+        /* Botón Flotante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 56px;
+            height: 56px;
+            bottom: 24px;
+            right: 20px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Header / Navbar -->
     <div class="top-bar">
         <a href="index.html" class="btn-back">
             <i class="fa-solid fa-arrow-left"></i> Volver
@@ -236,6 +383,45 @@
     </div>
 
     <div class="content">
+
+        <!-- Categoría Superior -->
+        <div id="topCategoryTag" class="category-tag">GALPONES</div>
+
+        <!-- Galería de Fotos -->
+        <div class="gallery-container">
+            <div class="gallery-main">
+                <img id="mainGalleryImg" src="foto2.jpg" alt="Melo Metalúrgica Galpón" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80';">
+                <button type="button" class="gallery-arrow prev" onclick="changeSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="gallery-arrow next" onclick="changeSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+            <!-- Miniaturas -->
+            <div class="thumbnails-grid">
+                <img src="foto2.jpg" class="thumb active" onclick="setGalleryImage(0, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=300&q=80';">
+                <img src="foto3.jpg" class="thumb" onclick="setGalleryImage(1, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=300&q=80';">
+                <img src="foto4.jpg" class="thumb" onclick="setGalleryImage(2, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=300&q=80';">
+                <img src="titulo.jpeg.jpg" class="thumb" onclick="setGalleryImage(3, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=300&q=80';">
+                <img src="foto2.jpg" class="thumb" onclick="setGalleryImage(4, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=300&q=80';">
+                <img src="foto3.jpg" class="thumb" onclick="setGalleryImage(5, this)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=300&q=80';">
+            </div>
+        </div>
+
+        <!-- Especificaciones Técnicas -->
+        <div class="specs-section">
+            <h1 id="pageTitle" class="specs-title">Galpones</h1>
+            <ul class="specs-list">
+                <li>Cabreadas y columnas de: hierro torsionado, alma llena, o perfil U.</li>
+                <li>Perfilería para techo y laterales: Perfil de 100x50x2 mm galvanizado.</li>
+                <li>Chapa de techo: Sincalum n°25, acanalada.</li>
+                <li>Chapa de lateral: Sincalum n°25 acanalada.</li>
+                <li>Portón corredizo.</li>
+            </ul>
+        </div>
+
+        <!-- Encabezado del Cotizador -->
+        <h2 id="cotizaHeading" class="cotiza-heading">Cotizá tu Galpón</h2>
+
+        <!-- Formulario Cotizador -->
         <div class="card">
             <div class="card-title">
                 <i class="fa-solid fa-calculator" style="color: #2563eb;"></i> Cotizador
@@ -244,7 +430,7 @@
             <form id="cotizadorForm">
                 <div class="form-group">
                     <label class="label" for="tipoEstructura">TIPO DE ESTRUCTURA</label>
-                    <select id="tipoEstructura" class="input">
+                    <select id="tipoEstructura" class="input" onchange="actualizarInterfazSegunTipo(this.value)">
                         <option value="galpon">Galpón ($105.000 / m²)</option>
                         <option value="tinglado">Tinglado ($95.000 / m²)</option>
                     </select>
@@ -296,17 +482,72 @@
                 </div>
             </div>
         </div>
+
     </div>
 
+    <!-- Botón Flotante WhatsApp -->
+    <a id="whatsappFloat" href="https://wa.me/5493388467395?text=Hola%20Melo%20Metal%C3%Bargica,%20quisiera%20consultar%20por%20un%20presupuesto" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
-        // Preselecciona el tipo según lo que presionó en el inicio
-        const urlParams = new URLSearchParams(window.location.search);
-        const tipoParam = urlParams.get('tipo');
-        if (tipoParam && (tipoParam === 'tinglado' || tipoParam === 'galpon')) {
-            document.getElementById('tipoEstructura').value = tipoParam;
+        // Imágenes para el slider
+        const imagenesGaleria = [
+            'foto2.jpg',
+            'foto3.jpg',
+            'foto4.jpg',
+            'titulo.jpeg.jpg',
+            'foto2.jpg',
+            'foto3.jpg'
+        ];
+        let currentSlideIndex = 0;
+
+        function setGalleryImage(index, element) {
+            currentSlideIndex = index;
+            document.getElementById('mainGalleryImg').src = imagenesGaleria[index];
+            const thumbs = document.querySelectorAll('.thumb');
+            thumbs.forEach(t => t.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            } else if (thumbs[index]) {
+                thumbs[index].classList.add('active');
+            }
         }
 
-        // Precios por m2
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex < 0) currentSlideIndex = imagenesGaleria.length - 1;
+            if (currentSlideIndex >= imagenesGaleria.length) currentSlideIndex = 0;
+            setGalleryImage(currentSlideIndex);
+        }
+
+        // Cambio de textos dinámico
+        function actualizarInterfazSegunTipo(tipo) {
+            const topCategoryTag = document.getElementById('topCategoryTag');
+            const pageTitle = document.getElementById('pageTitle');
+            const cotizaHeading = document.getElementById('cotizaHeading');
+
+            if (tipo === 'tinglado') {
+                topCategoryTag.innerText = 'TINGLADOS';
+                pageTitle.innerText = 'Tinglados';
+                cotizaHeading.innerText = 'Cotizá tu Tinglado';
+            } else {
+                topCategoryTag.innerText = 'GALPONES';
+                pageTitle.innerText = 'Galpones';
+                cotizaHeading.innerText = 'Cotizá tu Galpón';
+            }
+        }
+
+        // Lectura de parámetro en URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tipoParam = urlParams.get('tipo');
+
+        if (tipoParam === 'tinglado' || tipoParam === 'galpon') {
+            document.getElementById('tipoEstructura').value = tipoParam;
+            actualizarInterfazSegunTipo(tipoParam);
+        }
+
+        // Lógica de Cotización
         const PRECIO_GALPON = 105000;
         const PRECIO_TINGLADO = 95000;
         const TELEFONO_WHATSAPP = "5493388467395";
@@ -325,7 +566,6 @@
                 return;
             }
 
-            // Fórmula: (Ancho * Largo) * (1 + Alto/10)
             const superficiePlanta = ancho * largo;
             const m2Computables = Math.round(superficiePlanta * (1 + (alto / 10)));
             const precioUnitario = (tipo === 'galpon') ? PRECIO_GALPON : PRECIO_TINGLADO;
@@ -337,7 +577,6 @@
                 maximumFractionDigits: 0
             }).format(precioTotal);
 
-            // Guardar para la generación del PDF
             datosUltimaCotizacion = {
                 tipo: tipo === 'galpon' ? 'Galpón' : 'Tinglado',
                 material: material,
@@ -357,8 +596,7 @@
             
             document.getElementById('resultado').style.display = 'block';
 
-            // Mensaje requerido al hacer clic en WhatsApp
-            const mensajeWa = `Hola, hice una cotización y quisiera asesorarme para saber mas`;
+            const mensajeWa = `Hola, hice una cotización y quisiera asesorarme para saber más.`;
             document.getElementById('linkWhatsapp').href = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensajeWa)}`;
         }
 
@@ -368,14 +606,13 @@
             datosUltimaCotizacion = null;
         }
 
-        // Generador formal de Recibo PDF desde el iPhone
+        // Generador de Recibo PDF
         function descargarReciboPDF() {
             if (!datosUltimaCotizacion) return;
 
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Encabezado
             doc.setFillColor(13, 21, 39);
             doc.rect(0, 0, 210, 32, 'F');
 
@@ -387,7 +624,6 @@
             doc.setFont("helvetica", "normal");
             doc.text("General Villegas - Cotización Formal", 14, 25);
 
-            // Título
             doc.setTextColor(15, 23, 42);
             doc.setFontSize(14);
             doc.setFont("helvetica", "bold");
@@ -402,7 +638,6 @@
             doc.setDrawColor(203, 213, 225);
             doc.line(14, 57, 196, 57);
 
-            // Detalles
             doc.setFontSize(11);
             doc.setFont("helvetica", "bold");
             doc.text("Detalles de la estructura:", 14, 68);
@@ -414,7 +649,6 @@
             doc.text(`• Superficie computable calculada: ${datosUltimaCotizacion.m2} m²`, 18, 100);
             doc.text(`• Valor m² computable: $${datosUltimaCotizacion.precioM2.toLocaleString('es-AR')} ARS`, 18, 108);
 
-            // Cuadro del Precio Final
             doc.setFillColor(240, 253, 244);
             doc.setDrawColor(187, 247, 208);
             doc.roundedRect(14, 118, 182, 28, 3, 3, 'FD');
@@ -426,7 +660,6 @@
             doc.setFontSize(18);
             doc.text(datosUltimaCotizacion.precioTotalFormateado + " ARS", 20, 138);
 
-            // Pie
             doc.setTextColor(100, 116, 139);
             doc.setFontSize(9);
             doc.setFont("helvetica", "italic");
@@ -438,3 +671,4 @@
     </script>
 </body>
 </html>
+
